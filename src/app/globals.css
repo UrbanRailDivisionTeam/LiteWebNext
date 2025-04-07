@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-@source "../node_modules/reablocks/index.css";
+/* 从 node_modules 导入 reablocks 样式 */
+
 
 /* Color tokens */
 :root,
