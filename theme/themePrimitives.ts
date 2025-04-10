@@ -36,6 +36,12 @@ declare module '@mui/material/styles' {
         vars?: ThemeOptions
         applyStyles?: (mode: string, styles: any) => any
     }
+
+    // 扩展 TypeBackground 接口
+    interface TypeBackground {
+        defaultChannel?: string
+        paperChannel?: string
+    }
 }
 
 const defaultTheme = createTheme()
