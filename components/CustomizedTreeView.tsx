@@ -15,6 +15,14 @@ import { TreeItem2Provider } from '@mui/x-tree-view/TreeItem2Provider'
 import { TreeViewBaseItem } from '@mui/x-tree-view/models'
 import { useTheme } from '@mui/material/styles'
 
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
+import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded'
+import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded'
+import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded'
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
+import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
+
 type Color = 'blue' | 'green'
 
 type ExtendedTreeItemProps = {
@@ -23,10 +31,44 @@ type ExtendedTreeItemProps = {
     label: string
 }
 
+const mainListItems = [
+    {
+        text: '主页',
+        icon: <HomeRoundedIcon />,
+        href: '/dashboard',
+    },
+    {
+        text: '相关方',
+        icon: <AnalyticsRoundedIcon />,
+        href: '/dashboard/',
+    },
+    {
+        text: '异常',
+        icon: <PeopleRoundedIcon />,
+        href: '/dashboard',
+    },
+    {
+        text: '人员效能',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '工作量',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '差旅',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '差旅',
+        icon: <AssignmentRoundedIcon />,
+    },
+]
+
 const ITEMS: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
     {
         id: '1',
-        label: 'Website',
+        label: '主页',
         children: [
             { id: '1.1', label: 'Home', color: 'green' },
             { id: '1.2', label: 'Pricing', color: 'green' },

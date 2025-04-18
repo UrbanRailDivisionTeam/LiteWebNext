@@ -14,16 +14,42 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
 
 const mainListItems = [
-    { text: 'Home', icon: <HomeRoundedIcon /> },
-    { text: 'Analytics', icon: <AnalyticsRoundedIcon /> },
-    { text: 'Clients', icon: <PeopleRoundedIcon /> },
-    { text: 'Tasks', icon: <AssignmentRoundedIcon /> },
+    {
+        text: '主页',
+        icon: <HomeRoundedIcon />,
+        href: '/dashboard',
+    },
+    {
+        text: '相关方',
+        icon: <AnalyticsRoundedIcon />,
+        href: '/dashboard/',
+    },
+    {
+        text: '异常',
+        icon: <PeopleRoundedIcon />,
+        href: '/dashboard',
+    },
+    {
+        text: '人员效能',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '工作量',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '差旅',
+        icon: <AssignmentRoundedIcon />,
+    },
+    {
+        text: '差旅',
+        icon: <AssignmentRoundedIcon />,
+    },
 ]
 
 const secondaryListItems = [
-    { text: 'Settings', icon: <SettingsRoundedIcon /> },
-    { text: 'About', icon: <InfoRoundedIcon /> },
-    { text: 'Feedback', icon: <HelpRoundedIcon /> },
+    { text: '设置', icon: <SettingsRoundedIcon /> },
+    { text: '关于', icon: <InfoRoundedIcon /> },
 ]
 
 export default function MenuContent() {

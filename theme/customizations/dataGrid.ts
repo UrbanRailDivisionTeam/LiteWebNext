@@ -1,3 +1,4 @@
+'use client'
 import { paperClasses } from '@mui/material/Paper'
 import { alpha, Theme } from '@mui/material/styles'
 import type { DataGridProComponents } from '@mui/x-data-grid-pro/themeAugmentation'
