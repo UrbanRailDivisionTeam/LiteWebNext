@@ -1,10 +1,6 @@
-'use client'
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded'
-import CustomDatePicker from '@/components/header/CustomDatePicker'
 import NavbarBreadcrumbs from '@/components/header/NavbarBreadcrumbs'
-import MenuButton from '@/components/header/MenuButton'
 import ColorModeIconDropdown from '@/theme/ColorModeIconDropdown'
 import Search from '@/components/header/Search'
 
@@ -25,10 +21,6 @@ export default function Header() {
             <NavbarBreadcrumbs />
             <Stack direction="row" sx={{ gap: 1 }}>
                 <Search />
-                <CustomDatePicker />
-                <MenuButton showBadge aria-label="Open notifications">
-                    <NotificationsRoundedIcon />
-                </MenuButton>
                 <ColorModeIconDropdown />
             </Stack>
         </Stack>

@@ -1,17 +1,9 @@
 import { TreeViewBaseItem } from '@mui/x-tree-view/models'
-
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
-import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
 import ArticleIcon from '@mui/icons-material/Article'
-import DeleteIcon from '@mui/icons-material/Delete'
-import FolderOpenIcon from '@mui/icons-material/FolderOpen'
-import ImageIcon from '@mui/icons-material/Image'
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack'
 import FolderRounded from '@mui/icons-material/FolderRounded'
-
 import { ExtendedTreeItemProps } from '@/components/sideMenu/FilePageTreeView'
 
 // 所有侧边栏上半部分页面树形节点的相关定义
@@ -20,7 +12,7 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
         id: '1',
         label: '主页',
         href: '/dashboard',
-        icon: FolderRounded,
+        icon: HomeRoundedIcon,
     },
     {
         id: '2',
@@ -51,19 +43,19 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             {
                 id: '3.1',
                 label: '人员效能分析',
-                icon: SettingsRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/general/personnel_effectiveness',
             },
             {
                 id: '3.2',
                 label: '制造差旅分析',
-                icon: SettingsRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/general/personnel_traveler',
             },
             {
                 id: '3.3',
                 label: '员工工作量预测',
-                icon: SettingsRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/general/personnel_workloads',
             },
         ],
@@ -77,19 +69,19 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             {
                 id: '4.1',
                 label: '生产异常响应分析',
-                icon: HelpRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/error/responsive',
             },
             {
                 id: '4.2',
                 label: '校线异常分析',
-                icon: HelpRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/error/calibration_line',
             },
             {
-                id: '4.2',
+                id: '4.3',
                 label: '校线月报生成',
-                icon: HelpRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/error/report_generation',
             },
         ],
@@ -103,19 +95,19 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             {
                 id: '5.1',
                 label: '全员型改善提交分析',
-                icon: InfoRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/ameliorate/submission_of_analyses',
             },
             {
                 id: '5.2',
                 label: '全员型改善审核分析',
-                icon: InfoRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/ameliorate/audit_analysis',
             },
             {
                 id: '5.3',
                 label: '改善详情导出',
-                icon: InfoRoundedIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/ameliorate/audit_analysis',
             },
         ],
@@ -129,13 +121,13 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             {
                 id: '6.1',
                 label: '设计变更转化统计',
-                icon: DeleteIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/business_connection/convert',
             },
             {
-                id: '6.1',
+                id: '6.2',
                 label: '设计变更成本统计',
-                icon: DeleteIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/business_connection/costs',
             },
         ]
@@ -149,13 +141,13 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             {
                 id: '7.1',
                 label: '年月计划管理',
-                icon: ImageIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/plan/plan_management',
             },
             {
                 id: '7.2',
                 label: '车间工作量评估',
-                icon: ImageIcon,
+                icon: ArticleIcon,
                 href: '/dashboard/plan/workshop_workloads',
             },
         ]
@@ -163,8 +155,8 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
     {
         id: '8',
         label: '城轨通讯录',
-        href: '/dashboard',
-        icon: FolderRounded,
+        href: '/dashboard/directory',
+        icon: ArticleIcon,
     },
 ]
 
