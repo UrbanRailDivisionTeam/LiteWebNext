@@ -1,12 +1,12 @@
+'use client'
 import * as React from 'react'
 import Stack from '@mui/material/Stack'
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded'
-import CustomDatePicker from './CustomDatePicker'
-import NavbarBreadcrumbs from './NavbarBreadcrumbs'
-import MenuButton from './MenuButton'
-import ColorModeIconDropdown from '.././theme/ColorModeIconDropdown'
-
-import Search from './Search'
+import CustomDatePicker from '@/components/header/CustomDatePicker'
+import NavbarBreadcrumbs from '@/components/header/NavbarBreadcrumbs'
+import MenuButton from '@/components/header/MenuButton'
+import ColorModeIconDropdown from '@/theme/ColorModeIconDropdown'
+import Search from '@/components/header/Search'
 
 export default function Header() {
     return (

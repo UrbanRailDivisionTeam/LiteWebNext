@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
 import Divider, { dividerClasses } from '@mui/material/Divider'
@@ -9,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded'
-import MenuButton from '@/components/MenuButton'
+import MenuButton from '@/components/header/MenuButton'
 
 const MenuItem = styled(MuiMenuItem)({
     margin: '2px 0',

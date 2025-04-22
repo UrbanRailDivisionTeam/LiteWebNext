@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import Badge, { badgeClasses } from '@mui/material/Badge'
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'

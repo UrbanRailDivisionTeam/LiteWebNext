@@ -9,7 +9,6 @@ import { surfacesCustomizations } from '@/theme/customizations/surfaces'
 import { chartsCustomizations } from '@/theme/customizations/charts'
 import { dataGridCustomizations } from '@/theme/customizations/dataGrid'
 import { datePickersCustomizations } from '@/theme/customizations/datePickers'
-import { treeViewCustomizations } from '@/theme/customizations/treeView'
 import { colorSchemes, typography, shadows, shape } from '@/theme/themePrimitives'
 
 export default function AppTheme({ children }: { children: React.ReactNode }) {
@@ -32,7 +31,6 @@ export default function AppTheme({ children }: { children: React.ReactNode }) {
                       ...chartsCustomizations,
                       ...dataGridCustomizations,
                       ...datePickersCustomizations,
-                      ...treeViewCustomizations,
                   },
               })
     }, [])

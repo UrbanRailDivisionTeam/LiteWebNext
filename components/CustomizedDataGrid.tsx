@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
-import { columns, rows } from '@/components/data/grid'
+import { columns, rows } from '@/data/grid'
 
 export default function CustomizedDataGrid() {
     return (

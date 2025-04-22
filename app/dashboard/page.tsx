@@ -6,8 +6,8 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Copyright from '@/components/internals/Copyright'
 import ChartUserByCountry from '@/components/ChartUserByCountry'
-import CustomizedTreeView from '@/components/CustomizedTreeView'
 import CustomizedDataGrid from '@/components/CustomizedDataGrid'
+import FileExplorer from '@/components/FileExplorerTreeView'
 import HighlightedCard from '@/components/HighlightedCard'
 import PageViewsBarChart from '@/components/PageViewsBarChart'
 import SessionsChart from '@/components/SessionsChart'
@@ -69,7 +69,7 @@ export default function Dashboard() {
                 </Grid>
                 <Grid size={{ xs: 12, lg: 3 }}>
                     <Stack gap={2} direction={{ xs: 'column', sm: 'row', lg: 'column' }}>
-                        <CustomizedTreeView />
+                        <FileExplorer/>
                         <ChartUserByCountry />
                     </Stack>
                 </Grid>
