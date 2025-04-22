@@ -46,7 +46,8 @@ const TreeItemRoot = styled('li')(({ theme }) => ({
 const TreeItemContent = styled('div')(({ theme }) => ({
     padding: theme.spacing(0.5),
     paddingRight: theme.spacing(1),
-    paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
+    // paddingLeft: `calc(${theme.spacing(1)} + var(${theme.spacing(2)}) * var(--TreeView-itemDepth))`,
+    paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth) / 2)`,
     width: '100%',
     boxSizing: 'border-box', // prevent width + padding to overflow
     position: 'relative',
@@ -134,8 +135,11 @@ function CustomLabel({ icon: Icon, expandable, children, href, ...other }: Custo
             }}
         >
             {Icon && <Box component={Icon} className="labelIcon" color="inherit" sx={{ mr: 1, fontSize: '1.2rem' }} />}
-            <Link href={href}></Link>
-            <TreeItemLabelText variant="body2">{children}</TreeItemLabelText>
+            <Link href={href}>
+                <TreeItemLabelText variant="body2">
+                    {children}
+                </TreeItemLabelText>
+            </Link>
         </TreeItemLabel>
     )
 }

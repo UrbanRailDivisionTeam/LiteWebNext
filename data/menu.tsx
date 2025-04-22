@@ -25,19 +25,19 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
     {
         id: '2',
         label: '相关方管理',
-        href: '/dashboard',
+        href: '/dashboard/interested_party',
         icon: FolderRounded,
         children: [
             {
                 id: '2.1',
                 label: '相关方情况分析',
-                href: '/dashboard',
+                href: '/dashboard/interested_party/analysis',
                 icon: ArticleIcon,
             },
             {
                 id: '2.2',
                 label: '相关方进入详情',
-                href: '/dashboard',
+                href: '/dashboard/interested_party/details',
                 icon: ArticleIcon,
             },
         ],
@@ -45,92 +45,120 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
     {
         id: '3',
         label: '综合管理',
-        href: '/dashboard',
+        href: '/dashboard/general',
         icon: FolderRounded,
         children: [
             {
                 id: '3.1',
                 label: '人员效能分析',
                 icon: SettingsRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/general/personnel_effectiveness',
             },
             {
                 id: '3.2',
                 label: '制造差旅分析',
                 icon: SettingsRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/general/personnel_traveler',
             },
             {
                 id: '3.3',
                 label: '员工工作量预测',
                 icon: SettingsRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/general/personnel_workloads',
             },
         ],
     },
     {
         id: '4',
         label: '异常管理',
-        href: '/dashboard',
+        href: '/dashboard/error',
         icon: FolderRounded,
         children: [
             {
                 id: '4.1',
-                label: '月度异常响应及时分析',
+                label: '生产异常响应分析',
                 icon: HelpRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/error/responsive',
             },
             {
                 id: '4.2',
                 label: '校线异常分析',
                 icon: HelpRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/error/calibration_line',
             },
             {
-                id: '4.3',
-                label: '异常相关明细导出',
+                id: '4.2',
+                label: '校线月报生成',
                 icon: HelpRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/error/report_generation',
             },
         ],
     },
     {
         id: '5',
         label: '改善管理',
-        href: '/dashboard',
+        href: '/dashboard/ameliorate',
         icon: FolderRounded,
         children: [
             {
                 id: '5.1',
                 label: '全员型改善提交分析',
                 icon: InfoRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/ameliorate/submission_of_analyses',
             },
             {
                 id: '5.2',
                 label: '全员型改善审核分析',
                 icon: InfoRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/ameliorate/audit_analysis',
             },
             {
                 id: '5.3',
                 label: '改善详情导出',
                 icon: InfoRoundedIcon,
-                href: '/dashboard',
+                href: '/dashboard/ameliorate/audit_analysis',
             },
         ],
     },
     {
         id: '6',
         label: '业联管理',
-        href: '/dashboard',
+        href: '/dashboard/business_connection',
         icon: FolderRounded,
+        children: [
+            {
+                id: '6.1',
+                label: '设计变更转化统计',
+                icon: DeleteIcon,
+                href: '/dashboard/business_connection/convert',
+            },
+            {
+                id: '6.1',
+                label: '设计变更成本统计',
+                icon: DeleteIcon,
+                href: '/dashboard/business_connection/costs',
+            },
+        ]
     },
     {
         id: '7',
         label: '计划管理',
-        href: '/dashboard',
+        href: '/dashboard/plan',
         icon: FolderRounded,
+        children: [
+            {
+                id: '7.1',
+                label: '年月计划管理',
+                icon: ImageIcon,
+                href: '/dashboard/plan/plan_management',
+            },
+            {
+                id: '7.2',
+                label: '车间工作量评估',
+                icon: ImageIcon,
+                href: '/dashboard/plan/workshop_workloads',
+            },
+        ]
     },
     {
         id: '8',
