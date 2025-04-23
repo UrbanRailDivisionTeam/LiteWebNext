@@ -1,5 +1,6 @@
 'use client'
 import * as React from 'react'
+import { zhCN } from '@mui/material/locale'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { inputsCustomizations } from '@/theme/customizations/inputs'
 import { dataDisplayCustomizations } from '@/theme/customizations/dataDisplay'
@@ -13,30 +14,29 @@ import { colorSchemes, typography, shadows, shape } from '@/theme/themePrimitive
 
 export default function AppTheme({ children }: { children: React.ReactNode }) {
     const theme = React.useMemo(() => {
-        return createTheme({
-                  cssVariables: {
-                      colorSchemeSelector: 'data-mui-color-scheme',
-                      cssVarPrefix: 'template',
-                  },
-                  colorSchemes,
-                  typography,
-                  shadows,
-                  shape,
-                  components: {
-                      ...inputsCustomizations,
-                      ...dataDisplayCustomizations,
-                      ...feedbackCustomizations,
-                      ...navigationCustomizations,
-                      ...surfacesCustomizations,
-                      ...chartsCustomizations,
-                      ...dataGridCustomizations,
-                      ...datePickersCustomizations,
-                  },
-              })
+        return createTheme(
+            {
+                cssVariables: {
+                    colorSchemeSelector: 'data-mui-color-scheme',
+                    cssVarPrefix: 'template',
+                },
+                colorSchemes,
+                typography,
+                shadows,
+                shape,
+                components: {
+                    ...inputsCustomizations,
+                    ...dataDisplayCustomizations,
+                    ...feedbackCustomizations,
+                    ...navigationCustomizations,
+                    ...surfacesCustomizations,
+                    ...chartsCustomizations,
+                    ...dataGridCustomizations,
+                    ...datePickersCustomizations,
+                },
+            },
+            zhCN
+        )
     }, [])
-    return (
-        <ThemeProvider theme={theme}>
-            {children}
-        </ThemeProvider>
-    )
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }

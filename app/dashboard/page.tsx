@@ -39,8 +39,7 @@ const data: StatCardProps[] = [
 
 export default function Dashboard() {
     return (
-        <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
-            {/* cards */}
+        <>
             <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
                 Overview
             </Typography>
@@ -69,12 +68,11 @@ export default function Dashboard() {
                 </Grid>
                 <Grid size={{ xs: 12, lg: 3 }}>
                     <Stack gap={2} direction={{ xs: 'column', sm: 'row', lg: 'column' }}>
-                        <FileExplorer/>
+                        <FileExplorer />
                         <ChartUserByCountry />
                     </Stack>
                 </Grid>
             </Grid>
-            <Copyright sx={{ my: 4 }} />
-        </Box>
+        </>
     )
 }

@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack'
 import AppNavbar from '@/components/sideMenu/AppNavbar'
 import Header from '@/components/header/Header'
 import SideMenu from '@/components/sideMenu/SideMenu'
+import Copyright from '@/components/internals/Copyright'
 import AppTheme from '@/theme/AppTheme'
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {
@@ -38,7 +39,10 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
                         }}
                     >
                         <Header />
-                        {children}
+                        <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
+                            {children}
+                            <Copyright sx={{ my: 4 }} />
+                        </Box>
                     </Stack>
                 </Box>
             </Box>

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Link from 'next/link'
+import Stack from '@mui/material/Stack'
 import { animated, useSpring } from '@react-spring/web'
 import { styled, alpha } from '@mui/material/styles'
 import { TransitionProps } from '@mui/material/transitions'
@@ -120,11 +121,29 @@ const TreeItemLabelText = styled(Typography)({
 interface CustomLabelProps {
     children: React.ReactNode
     href: string
-    icon?: React.ElementType
-    expandable?: boolean
+    expandable: boolean
+    icon: React.ElementType
 }
 
-function CustomLabel({ icon: Icon, expandable, children, href, ...other }: CustomLabelProps) {
+function CustomLabel({ icon: Icon, expandable, href, children, ...other }: CustomLabelProps) {
+    let content
+    if (!expandable) {
+        content = (
+            <Link href={href}>
+                <Stack direction="row" alignItems="center">
+                    {Icon && <Box component={Icon} className="labelIcon" color="inherit" sx={{ mr: 1, fontSize: '1.2rem' }} />}
+                    <TreeItemLabelText variant="body2">{children}</TreeItemLabelText>
+                </Stack>
+            </Link>
+        )
+    } else {
+        content = (
+            <Stack direction="row" alignItems="center">
+                {Icon && <Box component={Icon} className="labelIcon" color="inherit" sx={{ mr: 1, fontSize: '1.2rem' }} />}
+                <TreeItemLabelText variant="body2">{children}</TreeItemLabelText>
+            </Stack>
+        )
+    }
     return (
         <TreeItemLabel
             {...other}
@@ -133,12 +152,7 @@ function CustomLabel({ icon: Icon, expandable, children, href, ...other }: Custo
                 alignItems: 'center',
             }}
         >
-            {Icon && <Box component={Icon} className="labelIcon" color="inherit" sx={{ mr: 1, fontSize: '1.2rem' }} />}
-            <Link href={href}>
-                <TreeItemLabelText variant="body2">
-                    {children}
-                </TreeItemLabelText>
-            </Link>
+            {content}
         </TreeItemLabel>
     )
 }
@@ -153,11 +167,12 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(props: CustomTre
     )
 
     const item = useTreeItemModel<ExtendedTreeItemProps>(itemId)!
+    const expandable = item.children !== undefined
 
     let icon
     if (item.icon) {
         icon = item.icon
-    } else if (status.expandable) {
+    } else if (expandable) {
         icon = FolderRounded
     } else {
         icon = ArticleIcon
@@ -175,7 +190,7 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(props: CustomTre
                         {...getLabelProps({
                             icon: icon,
                             href: item.href,
-                            expandable: status.expandable && status.expanded,
+                            expandable: expandable,
                         })}
                     />
                     <TreeItemDragAndDropOverlay {...getDragAndDropOverlayProps()} />

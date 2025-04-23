@@ -104,12 +104,6 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 icon: ArticleIcon,
                 href: '/dashboard/ameliorate/audit_analysis',
             },
-            {
-                id: '5.3',
-                label: '改善详情导出',
-                icon: ArticleIcon,
-                href: '/dashboard/ameliorate/audit_analysis',
-            },
         ],
     },
     {
