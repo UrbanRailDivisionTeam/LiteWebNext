@@ -5,12 +5,13 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import Divider from '@mui/material/Divider'
 import SelfCard from './SelfCard'
 import SelfChart from './SelfChart'
 import { getCurrentTime } from '@/data/refresh_time'
 import { AmeliorateSumbitData } from './data'
 
-export default function AuditAnalysis() {
+export default function SubmitAnalysis() {
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>
@@ -31,18 +32,19 @@ export default function AuditAnalysis() {
                             <Typography component="h2" variant="subtitle2" gutterBottom>
                                 各组室改善指标完成情况
                             </Typography>
-                            {AmeliorateSumbitData.map((card, _) => (
-                                <SelfChart {...card} />
-                            ))}
+                            {AmeliorateSumbitData.map((card, index) =>
+                                index !== 0 ? (
+                                    <div>
+                                        <Divider sx={{ my: 2 }} />
+                                        <SelfChart {...card} />
+                                    </div>
+                                ) : (
+                                    <SelfChart {...card} />
+                                )
+                            )}
                         </CardContent>
                     </Card>
                 </Grid>
-                {/*<Grid size={{ xs: 12, md: 6 }}>
-                    <SessionsChart />
-                </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                    <PageViewsBarChart />
-                </Grid> */}
             </Grid>
         </Box>
     )
