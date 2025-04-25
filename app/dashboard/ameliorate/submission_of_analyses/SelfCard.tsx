@@ -3,18 +3,10 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { AmeliorateSumbitProps} from './data'
+import { AmeliorateSumbitProps, labelColors, labelTexts} from './data'
 
 export default function SelfCard({ title, trend, total_data, complete_data }: AmeliorateSumbitProps) {
     const value = ((complete_data / total_data) * 100).toFixed(2) + '%'
-    const labelColors = {
-        completed: 'success' as const,
-        not_completed: 'default' as const,
-    }
-    const labelTexts = {
-        completed: '已完成' as const,
-        not_completed: '未完成' as const,
-    }
     return (
         <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
             <CardContent>

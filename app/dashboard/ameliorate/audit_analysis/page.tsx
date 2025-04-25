@@ -2,12 +2,12 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { getCurrentTime } from '@/data/refresh_time'
-import ChartUser from './ChartUser'
+import AwaitingReviewPieChart from './AwaitingReviewPieChart'
+import AuditedPieChart from './AuditedPieChart'
+import AwaitingReviewBarChart from './AwaitingReviewBarChart'
+import AuditedBarChart from './AuditedBarChart'
 
 export default function AuditAnalysis() {
     return (
@@ -19,8 +19,17 @@ export default function AuditAnalysis() {
                 数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime()}
             </Typography>
             <Grid container spacing={2} columns={2} sx={{ mb: (theme) => theme.spacing(2) }}>
-                <Grid key={0} size={{ xs: 12, sm: 6, lg: 1 }}>
-                    <ChartUser/>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <AwaitingReviewPieChart />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <AuditedPieChart />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <AwaitingReviewBarChart />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <AuditedBarChart />
                 </Grid>
             </Grid>
         </Box>

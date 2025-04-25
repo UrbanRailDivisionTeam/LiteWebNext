@@ -32,16 +32,18 @@ export default function SubmitAnalysis() {
                             <Typography component="h2" variant="subtitle2" gutterBottom>
                                 各组室改善指标完成情况
                             </Typography>
-                            {AmeliorateSumbitData.map((card, index) =>
-                                index !== 0 ? (
-                                    <div>
-                                        <Divider sx={{ my: 2 }} />
+                            {AmeliorateSumbitData.map((card, index) => (
+                                <div key={index}>
+                                    {index !== 0 ? (
+                                        <>
+                                            <Divider sx={{ my: 2 }} />
+                                            <SelfChart {...card} />
+                                        </>
+                                    ) : (
                                         <SelfChart {...card} />
-                                    </div>
-                                ) : (
-                                    <SelfChart {...card} />
-                                )
-                            )}
+                                    )}
+                                </div>
+                            ))}
                         </CardContent>
                     </Card>
                 </Grid>

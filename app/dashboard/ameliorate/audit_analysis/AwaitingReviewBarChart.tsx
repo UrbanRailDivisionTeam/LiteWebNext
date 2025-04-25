@@ -1,11 +1,15 @@
+'use client'
 import * as React from 'react'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import Divider from '@mui/material/Divider'
+import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
-import { AmeliorateSumbitProps, labelColors, labelTexts, data_process, getColorPalette } from './data'
+import { AmeliorateAuditData, AmeliorateAuditProps, labelColors, labelTexts, getColorPalette, data_process } from './data'
 
-export default function SelfChart({ title, trend, children }: AmeliorateSumbitProps) {
+function GroupChart({ person_name, trend, department, wait_data, children }: AmeliorateAuditProps) {
     const colorPalette = getColorPalette()
     const { title_data, complete_data, not_complete_data, completed_index, children_len } = data_process(children)
 
@@ -21,12 +25,12 @@ export default function SelfChart({ title, trend, children }: AmeliorateSumbitPr
                     }}
                 >
                     <Typography variant="h4" component="p">
-                        {title}
+                        {department}
                     </Typography>
                     <Chip size="small" color={labelColors[trend]} label={labelTexts[trend]} />
                 </Stack>
                 <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    全部组室 {children_len} / 完成组室 {completed_index} / 未完成组室 {children_len - completed_index}
+                    全部负责人 {children_len} / 审核全部完成负责人 {completed_index} / 未完成负责人 {children_len - completed_index}
                 </Typography>
             </Stack>
             <BarChart
@@ -44,13 +48,13 @@ export default function SelfChart({ title, trend, children }: AmeliorateSumbitPr
                 series={[
                     {
                         id: 'complete',
-                        label: '已完成改善数',
+                        label: '已审批改善数',
                         data: complete_data,
                         stack: 'A',
                     },
                     {
                         id: 'not_complete',
-                        label: '未完成改善数',
+                        label: '待审批改善数',
                         data: not_complete_data,
                         stack: 'A',
                     },
@@ -65,5 +69,29 @@ export default function SelfChart({ title, trend, children }: AmeliorateSumbitPr
                 }}
             />
         </Stack>
+    )
+}
+
+export default function AuditedBarChart() {
+    return (
+        <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1 }}>
+            <CardContent>
+                <Typography component="h2" variant="subtitle2" gutterBottom>
+                    部门改善待审核情况
+                </Typography>
+                {AmeliorateAuditData.map((card, index) => (
+                    <div key={index}>
+                        {index !== 0 ? (
+                            <>
+                                <Divider sx={{ my: 2 }} />·
+                                <GroupChart {...card} />
+                            </>
+                        ) : (
+                            <GroupChart {...card} />
+                        )}
+                    </div>
+                ))}
+            </CardContent>
+        </Card>
     )
 }

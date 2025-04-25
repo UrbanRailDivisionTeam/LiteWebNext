@@ -9,41 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Grid from '@mui/material/Grid'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress'
-import { IndiaFlag, UsaFlag, BrazilFlag, GlobeFlag } from '@/components/internals/CustomIcons'
-
-const data = [
-    { label: 'India', value: 50000 },
-    { label: 'USA', value: 35000 },
-    { label: 'Brazil', value: 10000 },
-    { label: 'Other', value: 5000 },
-]
-
-const countries = [
-    {
-        name: 'India',
-        value: 50,
-        flag: <IndiaFlag />,
-        color: 'hsl(220, 25%, 65%)',
-    },
-    {
-        name: 'USA',
-        value: 35,
-        flag: <UsaFlag />,
-        color: 'hsl(220, 25%, 45%)',
-    },
-    {
-        name: 'Brazil',
-        value: 10,
-        flag: <BrazilFlag />,
-        color: 'hsl(220, 25%, 30%)',
-    },
-    {
-        name: 'Other',
-        value: 5,
-        flag: <GlobeFlag />,
-        color: 'hsl(220, 25%, 20%)',
-    },
-]
+import { DepartmentData, DepartmentValue, TotalWaitData } from './data'
 
 interface StyledTextProps {
     variant: 'primary' | 'secondary'
@@ -111,15 +77,15 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
 
 const colors = ['hsl(220, 20%, 65%)', 'hsl(220, 20%, 42%)', 'hsl(220, 20%, 35%)', 'hsl(220, 20%, 25%)']
 
-export default function ChartUser() {
+export default function AwaitingReviewPieChart() {
     return (
         <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1 }}>
             <CardContent>
                 <Typography component="h2" variant="subtitle2">
-                    事业部改善审核完成情况
+                    事业部改善待审核情况
                 </Typography>
                 <Grid container spacing={2} columns={13}>
-                    <Grid key='0' size={{ xs: 12, sm: 6, lg: 5 }}>
+                    <Grid key="00" size={{ xs: 12, sm: 6, lg: 5 }}>
                         <PieChart
                             colors={colors}
                             margin={{
@@ -130,7 +96,7 @@ export default function ChartUser() {
                             }}
                             series={[
                                 {
-                                    data,
+                                    data: DepartmentValue,
                                     innerRadius: 75,
                                     outerRadius: 100,
                                     paddingAngle: 0,
@@ -143,13 +109,12 @@ export default function ChartUser() {
                                 legend: { hidden: true },
                             }}
                         >
-                            <PieCenterLabel primaryText="98.5K" secondaryText="Total" />
+                            <PieCenterLabel primaryText={TotalWaitData.toLocaleString()} secondaryText="待审核改善总数" />
                         </PieChart>
                     </Grid>
-                    <Grid key='1' size={{ xs: 12, sm: 6, lg: 8 }}>
-                        {countries.map((country, index) => (
-                            <Stack key={index} direction="row" sx={{ alignItems: 'center', gap: 2, pb: 2 }}>
-                                {country.flag}
+                    <Grid key="01" size={{ xs: 12, sm: 6, lg: 8 }}>
+                        {DepartmentData.map((country, index) => (
+                            <Stack key={`00${String(index)}`} direction="row" sx={{ alignItems: 'center', gap: 2, pb: 2 }}>
                                 <Stack sx={{ gap: 1, flexGrow: 1 }}>
                                     <Stack
                                         direction="row"
@@ -160,7 +125,7 @@ export default function ChartUser() {
                                         }}
                                     >
                                         <Typography variant="body2" sx={{ fontWeight: '500' }}>
-                                            {country.name}
+                                            {country.label}
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                                             {country.value}%

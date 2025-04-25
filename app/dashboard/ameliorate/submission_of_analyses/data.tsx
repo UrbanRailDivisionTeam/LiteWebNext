@@ -1,3 +1,5 @@
+import { useTheme } from '@mui/material/styles'
+
 export type AmeliorateSumbitProps = {
     title: string
     trend: 'completed' | 'not_completed'
@@ -78,8 +80,8 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
                 trend: 'completed',
                 complete_data: 50,
                 total_data: 60,
-            }
-        ]
+            },
+        ],
     },
     {
         title: '项目工程部',
@@ -123,7 +125,7 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
                 complete_data: 50,
                 total_data: 60,
             },
-        ]
+        ],
     },
     {
         title: '综合管理部',
@@ -155,7 +157,7 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
                 complete_data: 50,
                 total_data: 60,
             },
-        ]
+        ],
     },
     {
         title: '总成车间',
@@ -246,8 +248,8 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
                 trend: 'completed',
                 complete_data: 50,
                 total_data: 60,
-            }
-        ]
+            },
+        ],
     },
     {
         title: '交车车间',
@@ -320,7 +322,43 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
                 trend: 'completed',
                 complete_data: 50,
                 total_data: 60,
-            }
-        ]
+            },
+        ],
     },
 ]
+
+export const labelColors = {
+    completed: 'success' as const,
+    not_completed: 'default' as const,
+}
+export const labelTexts = {
+    completed: '已完成' as const,
+    not_completed: '未完成' as const,
+}
+
+export function data_process(input_ch?: AmeliorateSumbitProps[]) {
+    let title_data = []
+    let complete_data = []
+    let not_complete_data = []
+    let completed_index = 0
+    let children_len = 0
+    if (input_ch !== undefined) {
+        children_len = input_ch?.length
+        for (let variable of input_ch) {
+            title_data.push(variable.title)
+            complete_data.push(variable.complete_data)
+            not_complete_data.push(variable.total_data - variable.complete_data)
+            if (variable.complete_data >= variable.total_data) {
+                completed_index += 1
+            }
+        }
+    }
+    // 对部门名称排序
+    title_data.sort()
+    return { title_data, complete_data, not_complete_data, completed_index, children_len }
+}
+
+export function getColorPalette() {
+    const theme = useTheme()
+    return [(theme.vars || theme).palette.primary.dark, (theme.vars || theme).palette.primary.light]
+}
