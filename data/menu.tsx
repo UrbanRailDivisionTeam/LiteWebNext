@@ -54,7 +54,7 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             },
             {
                 id: '3.3',
-                label: '员工工作量预测',
+                label: '工作量预测',
                 icon: ArticleIcon,
                 href: '/dashboard/general/personnel_workloads',
             },
@@ -80,7 +80,13 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             },
             {
                 id: '4.3',
-                label: '校线月报生成',
+                label: '校线异常明细',
+                icon: ArticleIcon,
+                href: '/dashboard/error/calibration_line_detail',
+            },
+            {
+                id: '4.4',
+                label: '异常月报生成',
                 icon: ArticleIcon,
                 href: '/dashboard/error/report_generation',
             },
@@ -103,6 +109,12 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 label: '全员型改善审核分析',
                 icon: ArticleIcon,
                 href: '/dashboard/ameliorate/audit_analysis',
+            },
+            {
+                id: '5.3',
+                label: '改善明细导出',
+                icon: ArticleIcon,
+                href: '/dashboard/ameliorate/export',
             },
         ],
     },

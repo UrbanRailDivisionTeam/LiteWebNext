@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
-import { columns, rows } from '@/data/directory'
+import { columns, rows } from '@/app/dashboard/directory/data'
 
 export default function Directory() {
     return (

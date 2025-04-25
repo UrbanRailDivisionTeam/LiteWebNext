@@ -1,5 +1,3 @@
-import { useTheme } from '@mui/material/styles'
-
 export type AmeliorateSumbitProps = {
     title: string
     trend: 'completed' | 'not_completed'
@@ -327,15 +325,6 @@ export const AmeliorateSumbitData: AmeliorateSumbitProps[] = [
     },
 ]
 
-export const labelColors = {
-    completed: 'success' as const,
-    not_completed: 'default' as const,
-}
-export const labelTexts = {
-    completed: '已完成' as const,
-    not_completed: '未完成' as const,
-}
-
 export function data_process(input_ch?: AmeliorateSumbitProps[]) {
     let title_data = []
     let complete_data = []
@@ -353,12 +342,26 @@ export function data_process(input_ch?: AmeliorateSumbitProps[]) {
             }
         }
     }
-    // 对部门名称排序
     title_data.sort()
     return { title_data, complete_data, not_complete_data, completed_index, children_len }
 }
 
-export function getColorPalette() {
-    const theme = useTheme()
-    return [(theme.vars || theme).palette.primary.dark, (theme.vars || theme).palette.primary.light]
+export const labelTextColors = {
+    completed: 'success' as const,
+    not_completed: 'default' as const,
+}
+
+export const labelColors = {
+    completed: 'success' as const,
+    not_completed: 'error' as const,
+}
+
+export const labelTexts = {
+    completed: '已完成' as const,
+    not_completed: '未完成' as const,
+}
+
+export const labelTimeTexts = {
+    overtime: '良好' as const,
+    ontime: '平均用时较长' as const,
 }

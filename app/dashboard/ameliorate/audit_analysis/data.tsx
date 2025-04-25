@@ -1,5 +1,3 @@
-import { useTheme } from '@mui/material/styles'
-
 export type AmeliorateAuditProps = {
     person_name: string
     trend: 'completed' | 'not_completed'
@@ -15,9 +13,9 @@ export const AmeliorateAuditData: AmeliorateAuditProps[] = [
         person_name: '刘成华',
         department: '总成车间',
         trend: 'completed',
-        wait_data: 40,        // 待审核数
-        complete_data: 1,     // 已审核数
-        request_data: 86,     // 指标数
+        wait_data: 40, // 待审核数
+        complete_data: 1, // 已审核数
+        request_data: 86, // 指标数
         children: [
             {
                 person_name: '彭亮',
@@ -420,21 +418,7 @@ export const DepartmentValue = DepartmentData.map((ch, _) => ({
     value: ch.value,
 }))
 
-export const labelColors = {
-    completed: 'success' as const,
-    not_completed: 'default' as const,
-}
-export const labelTexts = {
-    completed: '已完成' as const,
-    not_completed: '未完成' as const,
-}
-
-export function getColorPalette() {
-    const theme = useTheme()
-    return [(theme.vars || theme).palette.primary.dark, (theme.vars || theme).palette.primary.light]
-}
-
-export function data_process(input_ch?: AmeliorateAuditProps[]){
+export function data_process(input_ch?: AmeliorateAuditProps[]) {
     let title_data = []
     let complete_data = []
     let not_complete_data = []
@@ -451,7 +435,26 @@ export function data_process(input_ch?: AmeliorateAuditProps[]){
             }
         }
     }
-    // 对部门名称排序
     title_data.sort()
     return { title_data, complete_data, not_complete_data, completed_index, children_len }
+}
+
+export const labelTextColors = {
+    completed: 'success' as const,
+    not_completed: 'default' as const,
+}
+
+export const labelColors = {
+    completed: 'success' as const,
+    not_completed: 'error' as const,
+}
+
+export const labelTexts = {
+    completed: '已完成' as const,
+    not_completed: '未完成' as const,
+}
+
+export const labelTimeTexts = {
+    overtime: '良好' as const,
+    ontime: '平均用时较长' as const,
 }

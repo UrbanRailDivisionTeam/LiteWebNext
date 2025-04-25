@@ -7,9 +7,10 @@ import Divider from '@mui/material/Divider'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
-import { AmeliorateAuditData, AmeliorateAuditProps, labelColors, labelTexts, getColorPalette, data_process } from './data'
+import { getColorPalette } from '@/data/data'
+import { AmeliorateAuditData, AmeliorateAuditProps, labelColors, labelTexts, data_process } from './data'
 
-function GroupChart({ person_name, trend, department, wait_data, children }: AmeliorateAuditProps) {
+function GroupChart({ trend, department, children }: AmeliorateAuditProps) {
     const colorPalette = getColorPalette()
     const { title_data, complete_data, not_complete_data, completed_index, children_len } = data_process(children)
 
@@ -66,6 +67,9 @@ function GroupChart({ person_name, trend, department, wait_data, children }: Ame
                     legend: {
                         hidden: true,
                     },
+                }}
+                barLabel={(item, _) => {
+                    return item.value?.toString()
                 }}
             />
         </Stack>

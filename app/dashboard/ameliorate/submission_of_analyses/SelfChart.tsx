@@ -3,7 +3,8 @@ import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
-import { AmeliorateSumbitProps, labelColors, labelTexts, data_process, getColorPalette } from './data'
+import { getColorPalette } from '@/data/data'
+import { AmeliorateSumbitProps, data_process, labelColors, labelTexts } from './data'
 
 export default function SelfChart({ title, trend, children }: AmeliorateSumbitProps) {
     const colorPalette = getColorPalette()
@@ -62,6 +63,9 @@ export default function SelfChart({ title, trend, children }: AmeliorateSumbitPr
                     legend: {
                         hidden: true,
                     },
+                }}
+                barLabel={(item, _) => {
+                    return item.value?.toString();
                 }}
             />
         </Stack>

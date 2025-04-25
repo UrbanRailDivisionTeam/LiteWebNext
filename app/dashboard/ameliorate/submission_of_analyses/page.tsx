@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
 import SelfCard from './SelfCard'
 import SelfChart from './SelfChart'
-import { getCurrentTime } from '@/data/refresh_time'
+import { getCurrentTime } from '@/data/data'
 import { AmeliorateSumbitData } from './data'
 
 export default function SubmitAnalysis() {

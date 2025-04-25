@@ -118,7 +118,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                 <Card variant="outlined">
                     <SitemarkIcon />
                     <Typography component="h1" variant="h4" sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}>
-                        Sign in
+                        登录
                     </Typography>
                     <Box
                         component="form"
@@ -132,7 +132,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                         }}
                     >
                         <FormControl>
-                            <FormLabel htmlFor="email">Email</FormLabel>
+                            <FormLabel htmlFor="email">邮箱或者工号</FormLabel>
                             <TextField
                                 error={emailError}
                                 helperText={emailErrorMessage}
@@ -149,7 +149,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                             />
                         </FormControl>
                         <FormControl>
-                            <FormLabel htmlFor="password">Password</FormLabel>
+                            <FormLabel htmlFor="password">密码</FormLabel>
                             <TextField
                                 error={passwordError}
                                 helperText={passwordErrorMessage}
@@ -165,13 +165,17 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                                 color={passwordError ? 'error' : 'primary'}
                             />
                         </FormControl>
-                        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+                        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="记住我" />
                         <ForgotPassword open={open} handleClose={handleClose} />
                         <Button type="submit" fullWidth variant="contained" onClick={validateInputs}>
-                            Sign in
+                            登录
                         </Button>
                         <Link component="button" type="button" onClick={handleClickOpen} variant="body2" sx={{ alignSelf: 'center' }}>
-                            Forgot your password?
+                            忘记了你的密码？
+                        </Link>
+                            或者
+                        <Link component="button" type="button" onClick={handleClickOpen} variant="body2" sx={{ alignSelf: 'center' }}>
+                            没有账户？
                         </Link>
                     </Box>
                 </Card>

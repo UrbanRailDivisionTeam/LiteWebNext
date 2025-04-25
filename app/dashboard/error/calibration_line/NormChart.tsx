@@ -1,19 +1,14 @@
-'use client'
 import * as React from 'react'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
-import Card from '@mui/material/Card'
-import Divider from '@mui/material/Divider'
-import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
 import { getColorPalette } from '@/data/data'
-import { AmeliorateAuditData, AmeliorateAuditProps, data_process, labelColors, labelTexts } from './data'
+import { CalibrationLineGroup, data_process, labelColors, labelTexts } from './data'
 
-function GroupChart({ person_name, trend, department, wait_data, children }: AmeliorateAuditProps) {
+export default function NormChart({ title_name, trend, group }: CalibrationLineGroup) {
     const colorPalette = getColorPalette()
-    const { title_data, complete_data, not_complete_data, completed_index, children_len } = data_process(children)
-
+    const { title_data, complete_data, total_index, complete_index  } = data_process(group)
     return (
         <Stack>
             <Stack sx={{ justifyContent: 'space-between' }}>
@@ -26,12 +21,12 @@ function GroupChart({ person_name, trend, department, wait_data, children }: Ame
                     }}
                 >
                     <Typography variant="h4" component="p">
-                        {department}
+                        {title_name}
                     </Typography>
                     <Chip size="small" color={labelColors[trend]} label={labelTexts[trend]} />
                 </Stack>
                 <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    全部负责人 {children_len} / 完成改善指标负责人 {completed_index} / 未完成指标负责人 {children_len - completed_index}
+                    全部流程数 {total_index} / 及时数 {complete_index} / 超时数 {total_index - complete_index}
                 </Typography>
             </Stack>
             <BarChart
@@ -49,14 +44,8 @@ function GroupChart({ person_name, trend, department, wait_data, children }: Ame
                 series={[
                     {
                         id: 'complete',
-                        label: '已审批改善数',
+                        label: '及时率',
                         data: complete_data,
-                        stack: 'A',
-                    },
-                    {
-                        id: 'not_complete',
-                        label: '待审批改善数',
-                        data: not_complete_data,
                         stack: 'A',
                     },
                 ]}
@@ -69,33 +58,9 @@ function GroupChart({ person_name, trend, department, wait_data, children }: Ame
                     },
                 }}
                 barLabel={(item, _) => {
-                    return item.value?.toString();
+                    return `${item.value?.toString()}%`;
                 }}
             />
         </Stack>
-    )
-}
-
-export default function AuditedBarChart() {
-    return (
-        <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1 }}>
-            <CardContent>
-                <Typography component="h2" variant="subtitle2" gutterBottom>
-                    部门本月改善情况
-                </Typography>
-                {AmeliorateAuditData.map((card, index) => (
-                    <div key={index}>
-                        {index !== 0 ? (
-                            <>
-                                <Divider sx={{ my: 2 }} />·
-                                <GroupChart {...card} />
-                            </>
-                        ) : (
-                            <GroupChart {...card} />
-                        )}
-                    </div>
-                ))}
-            </CardContent>
-        </Card>
     )
 }
