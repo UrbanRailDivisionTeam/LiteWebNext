@@ -87,7 +87,7 @@ export default function AuditedBarChart() {
                     <div key={index}>
                         {index !== 0 ? (
                             <>
-                                <Divider sx={{ my: 2 }} />·
+                                <Divider sx={{ my: 2 }} />
                                 <GroupChart {...card} />
                             </>
                         ) : (

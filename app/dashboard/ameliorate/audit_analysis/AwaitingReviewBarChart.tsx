@@ -86,10 +86,10 @@ export default function AuditedBarChart() {
                 {AmeliorateAuditData.map((card, index) => (
                     <div key={index}>
                         {index !== 0 ? (
-                            <>
-                                <Divider sx={{ my: 2 }} />·
+                            <div>
+                                <Divider sx={{ my: 2 }} />
                                 <GroupChart {...card} />
-                            </>
+                            </div>
                         ) : (
                             <GroupChart {...card} />
                         )}

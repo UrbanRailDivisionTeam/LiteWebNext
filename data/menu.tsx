@@ -58,6 +58,12 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 icon: ArticleIcon,
                 href: '/dashboard/general/personnel_workloads',
             },
+            {
+                id: '3.4',
+                label: '人员考勤分析',
+                icon: ArticleIcon,
+                href: '/dashboard/general/attendance',
+            },
         ],
     },
     {

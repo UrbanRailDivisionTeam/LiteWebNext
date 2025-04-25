@@ -1,5 +1,6 @@
 'use client'
 import * as React from 'react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -53,17 +54,39 @@ export default function NavbarBreadcrumbs() {
     return (
         <StyledBreadcrumbs aria-label="breadcrumb" separator={<NavigateNextRoundedIcon fontSize="small" />}>
             {pathSegments.map((segment, index) => (
-                <Typography
-                    key={segment.path}
-                    variant="body1"
-                    sx={{
-                        color: index === pathSegments.length - 1 ? 'text.primary' : 'text.secondary',
-                        fontWeight: index === pathSegments.length - 1 ? 600 : 400,
-                        cursor: index === pathSegments.length - 1 ? 'default' : 'pointer',
-                    }}
-                >
-                    {segment.label}
-                </Typography>
+                index === pathSegments.length - 1 ? (
+                    <Typography
+                        key={segment.path}
+                        variant="body1"
+                        sx={{
+                            color: 'text.primary',
+                            fontWeight: 600,
+                            cursor: 'default',
+                        }}
+                    >
+                        {segment.label}
+                    </Typography>
+                ) : (
+                    <Link
+                        key={segment.path}
+                        href={segment.path}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                color: 'text.secondary',
+                                fontWeight: 400,
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    textDecoration: 'underline',
+                                },
+                            }}
+                        >
+                            {segment.label}
+                        </Typography>
+                    </Link>
+                )
             ))}
         </StyledBreadcrumbs>
     )
