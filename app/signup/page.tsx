@@ -54,7 +54,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
     },
 }))
 
-export default function SignUp(props: { disableCustomTheme?: boolean }) {
+export default function SignUp() {
     const [emailError, setEmailError] = React.useState(false)
     const [emailErrorMessage, setEmailErrorMessage] = React.useState('')
     const [passwordError, setPasswordError] = React.useState(false)
@@ -114,7 +114,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
     }
 
     return (
-        <AppTheme {...props}>
+        <AppTheme>
             <CssBaseline enableColorScheme />
             <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
             <SignUpContainer direction="column" justifyContent="space-between">
