@@ -86,12 +86,6 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
             },
             {
                 id: '4.3',
-                label: '校线异常明细',
-                icon: ArticleIcon,
-                href: '/dashboard/error/calibration_line_detail',
-            },
-            {
-                id: '4.4',
                 label: '异常月报生成',
                 icon: ArticleIcon,
                 href: '/dashboard/error/report_generation',

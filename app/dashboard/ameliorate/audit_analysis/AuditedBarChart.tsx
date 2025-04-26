@@ -10,7 +10,7 @@ import { BarChart } from '@mui/x-charts/BarChart'
 import { getColorPalette } from '@/data/data'
 import { AmeliorateAuditData, AmeliorateAuditProps, data_process, labelColors, labelTexts } from './data'
 
-function GroupChart({ person_name, trend, department, wait_data, children }: AmeliorateAuditProps) {
+function GroupChart({ trend, department, children }: AmeliorateAuditProps) {
     const colorPalette = getColorPalette()
     const { title_data, complete_data, not_complete_data, completed_index, children_len } = data_process(children)
 

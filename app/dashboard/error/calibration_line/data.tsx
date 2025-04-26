@@ -232,3 +232,122 @@ export function data_process(input_ch?: CalibrationLineGroupProps[]) {
     title_data.sort()
     return { title_data, complete_data, total_index, complete_index }
 }
+
+export interface PieChartErrorProps {
+    id?: number;
+    label: string
+    value: number
+}
+
+export interface PieChartErrorType {
+    title_name: string;
+    data: PieChartErrorProps[];
+}
+
+export const ConfigurationErrorValue: PieChartErrorType = {
+    title_name: '本月异常构型组成',
+    data: [
+        {
+            label: '终端',
+            value: 15,
+        },
+        {
+            label: '线号',
+            value: 20,
+        },
+        {
+            label: '标签',
+            value: 25,
+        },
+        {
+            label: '电缆',
+            value: 35,
+        },
+    ]
+}
+
+export const ProjectErrorValue: PieChartErrorType = {
+    title_name: '本月异常项目占比',
+    data: [
+        {
+            label: '广11',
+            value: 15,
+        },
+        {
+            label: 'ETS3',
+            value: 20,
+        },
+        {
+            label: 'CJ6三级修',
+            value: 25,
+        },
+        {
+            label: '新港线',
+            value: 35,
+        },
+    ]
+}
+
+export const SectorErrorValue: PieChartErrorType = {
+    title_name: '本月异常责任单位占比',
+    data: [
+        {
+            label: '制造班组',
+            value: 15,
+        },
+        {
+            label: '设计',
+            value: 20,
+        },
+        {
+            label: '电气工艺',
+            value: 25,
+        },
+        {
+            label: '供应商',
+            value: 35,
+        },
+        {
+            label: '机车事业部管线班',
+            value: 35,
+        },
+        {
+            label: '调试工艺',
+            value: 35,
+        },
+        {
+            label: '生产管理',
+            value: 35,
+        },
+        {
+            label: '物流',
+            value: 35,
+        },
+    ]
+}
+
+export const TypesErrorValue: PieChartErrorType = {
+    title_name: '本月异常类型组成',
+    data: [
+        {
+            label: '后工序意外',
+            value: 15,
+        },
+        {
+            label: '执行错误',
+            value: 20,
+        },
+        {
+            label: '来料、接口错误',
+            value: 25,
+        },
+        {
+            label: '工艺疏漏',
+            value: 35,
+        },
+        {
+            label: '缺失',
+            value: 35,
+        },
+    ]
+}

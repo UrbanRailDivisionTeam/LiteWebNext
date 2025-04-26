@@ -7,9 +7,10 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import { getCurrentTime } from '@/data/data'
-import { CalibrationLineTotalData, CalibrationLineGroupData } from './data'
+import { CalibrationLineTotalData, CalibrationLineGroupData, ConfigurationErrorValue, ProjectErrorValue, SectorErrorValue, TypesErrorValue } from './data'
 import NormCard from './NormCard'
 import NormChart from './NormChart'
+import NormPieChart from './NormPieChart'
 
 export default function Attendance() {
     return (
@@ -26,6 +27,20 @@ export default function Attendance() {
                         <NormCard {...card} />
                     </Grid>
                 ))}
+            </Grid>
+            <Grid container spacing={1} columns={4} sx={{ mb: (theme) => theme.spacing(2) }}>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <NormPieChart {...ConfigurationErrorValue} />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <NormPieChart {...ProjectErrorValue} />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <NormPieChart {...SectorErrorValue} />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
+                    <NormPieChart {...TypesErrorValue} />
+                </Grid>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ width: '100%' }}>

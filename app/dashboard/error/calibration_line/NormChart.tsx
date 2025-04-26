@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
@@ -57,7 +58,7 @@ export default function NormChart({ title_name, trend, group }: CalibrationLineG
                         hidden: true,
                     },
                 }}
-                barLabel={(item, _) => {
+                barLabel={(item, context) => {
                     return `${item.value?.toString()}%`;
                 }}
             />
