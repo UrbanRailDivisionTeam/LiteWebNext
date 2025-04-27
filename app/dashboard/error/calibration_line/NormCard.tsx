@@ -6,7 +6,17 @@ import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { formatMinutes } from '@/data/data'
-import { CalibrationLineTotalProps, CardColors, CardTexts } from './data'
+import { CalibrationLineTotalProps } from './data'
+
+const CardTexts = {
+    ontime: '良好' as const,
+    overtime: '平均用时较长' as const,
+}
+
+const CardColors = {
+    ontime: 'success' as const,
+    overtime: 'error' as const,
+}
 
 export default function NormCard({ title_name, trend, request_value, request_time, acerage_time }: CalibrationLineTotalProps) {
     return (

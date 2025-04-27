@@ -5,7 +5,17 @@ import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
 import { getColorPalette } from '@/data/data'
-import { CalibrationLineGroup, CalibrationLineGroupProps, labelColors, labelTexts } from './data'
+import { CalibrationLineGroup, CalibrationLineGroupProps} from './data'
+
+const labelTexts = {
+    inlimit: '及时率良好' as const,
+    overlimit: '及时率较低' as const,
+}
+
+const labelColors = {
+    inlimit: 'success' as const,
+    overlimit: 'error' as const,
+}
 
 export function data_process(input_ch?: CalibrationLineGroupProps[]) {
     let title_data = []

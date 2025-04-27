@@ -1,25 +1,4 @@
 'use server'
-import { connectToDatabase } from '@/utils/db'
-
-export const CardTexts = {
-    ontime: '良好' as const,
-    overtime: '平均用时较长' as const,
-}
-
-export const CardColors = {
-    ontime: 'success' as const,
-    overtime: 'error' as const,
-}
-
-export const labelTexts = {
-    inlimit: '及时率良好' as const,
-    overlimit: '及时率较低' as const,
-}
-
-export const labelColors = {
-    inlimit: 'success' as const,
-    overlimit: 'error' as const,
-}
 
 export type CalibrationLineTotalProps = {
     title_name: string
@@ -29,7 +8,7 @@ export type CalibrationLineTotalProps = {
     acerage_time: number
 }
 
-export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
+const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     {
         title_name: '示例-未响应异常数',
         trend: 'overtime',
@@ -74,21 +53,9 @@ export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     },
 ]
 
-export async function getCalibrationLineTotalData() {
-    try {
-        const { db } = await connectToDatabase()
-        const coll = db.collection('calibration_line_total_data')
-        const query = {}
-        const cursor = coll.find(query)
-        const results: CalibrationLineTotalProps[] = await cursor.toArray()
-        return results
-    } catch (error) {
-        console.error('查询失败：', error);
-    }
-    return CalibrationLineTotalData
+export async function getCalibrationLineTotalData(): Promise<CalibrationLineTotalProps[]> {
+    return await getData('calibration_line_total_data', CalibrationLineTotalData)
 }
-
-
 
 export type CalibrationLineGroup = {
     title_name: string
@@ -102,7 +69,7 @@ export type CalibrationLineGroupProps = {
     total_value: number
 }
 
-export const CalibrationLineGroupData: CalibrationLineGroup[] = [
+const CalibrationLineGroupData: CalibrationLineGroup[] = [
     {
         title_name: '异常响应及时率',
         trend: 'overlimit',
@@ -235,6 +202,10 @@ export const CalibrationLineGroupData: CalibrationLineGroup[] = [
     },
 ]
 
+export async function getCalibrationLineGroupData(): Promise<CalibrationLineGroup[]> {
+    return await getData('calibration_line_group_data', CalibrationLineGroupData)
+}
+
 export interface PieChartErrorProps {
     id?: number
     label: string
@@ -246,7 +217,7 @@ export interface PieChartErrorType {
     data: PieChartErrorProps[]
 }
 
-export const ConfigurationErrorValue: PieChartErrorType = {
+const ConfigurationErrorValue: PieChartErrorType = {
     title_name: '本月异常构型组成',
     data: [
         {
@@ -268,7 +239,11 @@ export const ConfigurationErrorValue: PieChartErrorType = {
     ],
 }
 
-export const ProjectErrorValue: PieChartErrorType = {
+export async function getConfigurationErrorValue(): Promise<PieChartErrorType> {
+    return await getData('configuration_error_value', ConfigurationErrorValue)
+}
+
+const ProjectErrorValue: PieChartErrorType = {
     title_name: '本月异常项目占比',
     data: [
         {
@@ -290,7 +265,11 @@ export const ProjectErrorValue: PieChartErrorType = {
     ],
 }
 
-export const SectorErrorValue: PieChartErrorType = {
+export async function getProjectErrorValue(): Promise<PieChartErrorType> {
+    return await getData('project_error_value', ProjectErrorValue)
+}
+
+const SectorErrorValue: PieChartErrorType = {
     title_name: '本月异常责任单位占比',
     data: [
         {
@@ -328,7 +307,11 @@ export const SectorErrorValue: PieChartErrorType = {
     ],
 }
 
-export const TypesErrorValue: PieChartErrorType = {
+export async function getSectorErrorValue(): Promise<PieChartErrorType> {
+    return await getData('secto_error_value', SectorErrorValue)
+}
+
+const TypesErrorValue: PieChartErrorType = {
     title_name: '本月异常类型组成',
     data: [
         {
@@ -352,4 +335,8 @@ export const TypesErrorValue: PieChartErrorType = {
             value: 35,
         },
     ],
+}
+
+export async function getTypesErrorValue(): Promise<PieChartErrorType> {
+    return await getData('types_error_value', TypesErrorValue)
 }
