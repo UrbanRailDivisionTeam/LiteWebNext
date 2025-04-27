@@ -13,7 +13,7 @@ export default function MenuContent() {
     return (
         <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-between' }}>
             <FilePageTreeView />
-            <List dense>
+            {/* <List dense>
                 {secondaryListItems.map((item, index) => (
                     <ListItem key={index} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton>
@@ -22,7 +22,7 @@ export default function MenuContent() {
                         </ListItemButton>
                     </ListItem>
                 ))}
-            </List>
+            </List> */}
         </Stack>
     )
 }

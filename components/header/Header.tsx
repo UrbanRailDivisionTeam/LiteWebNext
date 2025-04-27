@@ -20,7 +20,7 @@ export default function Header() {
         >
             <NavbarBreadcrumbs />
             <Stack direction="row" sx={{ gap: 1 }}>
-                <Search />
+                {/* <Search /> */}
                 <ColorModeIconDropdown />
             </Stack>
         </Stack>

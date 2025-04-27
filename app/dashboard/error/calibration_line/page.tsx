@@ -21,14 +21,14 @@ export default function Attendance() {
             <Typography color="textSecondary" sx={{ mb: 2 }}>
                 数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime()}
             </Typography>
-            <Grid container spacing={1} columns={6} sx={{ mb: (theme) => theme.spacing(2) }}>
+            <Grid container spacing={2} columns={6} sx={{ mb: (theme) => theme.spacing(2) }}>
                 {CalibrationLineTotalData.map((card, index) => (
                     <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
                         <NormCard {...card} />
                     </Grid>
                 ))}
             </Grid>
-            <Grid container spacing={1} columns={4} sx={{ mb: (theme) => theme.spacing(2) }}>
+            <Grid container spacing={2} columns={4} sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
                     <NormPieChart {...ConfigurationErrorValue} />
                 </Grid>
