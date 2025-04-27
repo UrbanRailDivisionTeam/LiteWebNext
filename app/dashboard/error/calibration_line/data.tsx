@@ -1,5 +1,4 @@
-'use server'
-
+'use client'
 export type CalibrationLineTotalProps = {
     title_name: string
     trend: 'overtime' | 'ontime'
@@ -8,7 +7,7 @@ export type CalibrationLineTotalProps = {
     acerage_time: number
 }
 
-const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
+export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     {
         title_name: '示例-未响应异常数',
         trend: 'overtime',
@@ -53,10 +52,6 @@ const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     },
 ]
 
-export async function getCalibrationLineTotalData(): Promise<CalibrationLineTotalProps[]> {
-    return await getData('calibration_line_total_data', CalibrationLineTotalData)
-}
-
 export type CalibrationLineGroup = {
     title_name: string
     trend: 'inlimit' | 'overlimit'
@@ -69,7 +64,7 @@ export type CalibrationLineGroupProps = {
     total_value: number
 }
 
-const CalibrationLineGroupData: CalibrationLineGroup[] = [
+export const CalibrationLineGroupData: CalibrationLineGroup[] = [
     {
         title_name: '异常响应及时率',
         trend: 'overlimit',
@@ -202,10 +197,6 @@ const CalibrationLineGroupData: CalibrationLineGroup[] = [
     },
 ]
 
-export async function getCalibrationLineGroupData(): Promise<CalibrationLineGroup[]> {
-    return await getData('calibration_line_group_data', CalibrationLineGroupData)
-}
-
 export interface PieChartErrorProps {
     id?: number
     label: string
@@ -217,7 +208,7 @@ export interface PieChartErrorType {
     data: PieChartErrorProps[]
 }
 
-const ConfigurationErrorValue: PieChartErrorType = {
+export const ConfigurationErrorValue: PieChartErrorType = {
     title_name: '本月异常构型组成',
     data: [
         {
@@ -239,11 +230,7 @@ const ConfigurationErrorValue: PieChartErrorType = {
     ],
 }
 
-export async function getConfigurationErrorValue(): Promise<PieChartErrorType> {
-    return await getData('configuration_error_value', ConfigurationErrorValue)
-}
-
-const ProjectErrorValue: PieChartErrorType = {
+export const ProjectErrorValue: PieChartErrorType = {
     title_name: '本月异常项目占比',
     data: [
         {
@@ -265,11 +252,7 @@ const ProjectErrorValue: PieChartErrorType = {
     ],
 }
 
-export async function getProjectErrorValue(): Promise<PieChartErrorType> {
-    return await getData('project_error_value', ProjectErrorValue)
-}
-
-const SectorErrorValue: PieChartErrorType = {
+export const SectorErrorValue: PieChartErrorType = {
     title_name: '本月异常责任单位占比',
     data: [
         {
@@ -307,11 +290,7 @@ const SectorErrorValue: PieChartErrorType = {
     ],
 }
 
-export async function getSectorErrorValue(): Promise<PieChartErrorType> {
-    return await getData('secto_error_value', SectorErrorValue)
-}
-
-const TypesErrorValue: PieChartErrorType = {
+export const TypesErrorValue: PieChartErrorType = {
     title_name: '本月异常类型组成',
     data: [
         {
@@ -337,6 +316,3 @@ const TypesErrorValue: PieChartErrorType = {
     ],
 }
 
-export async function getTypesErrorValue(): Promise<PieChartErrorType> {
-    return await getData('types_error_value', TypesErrorValue)
-}

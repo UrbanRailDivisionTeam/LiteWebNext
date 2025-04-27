@@ -7,18 +7,12 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import { getCurrentTime } from '@/data/data'
-import { getCalibrationLineTotalData, getCalibrationLineGroupData, getConfigurationErrorValue, getProjectErrorValue, getSectorErrorValue, getTypesErrorValue } from './data'
+import { CalibrationLineTotalData, CalibrationLineGroupData, ConfigurationErrorValue, ProjectErrorValue, SectorErrorValue, TypesErrorValue } from './data'
 import NormCard from './NormCard'
 import NormChart from './NormChart'
 import NormPieChart from './NormPieChart'
 
 export default function CalibrationLine() {
-    const CalibrationLineTotalData = React.use(getCalibrationLineTotalData())
-    const CalibrationLineGroupData = React.use(getCalibrationLineGroupData())
-    const ConfigurationErrorValue = React.use(getConfigurationErrorValue())
-    const ProjectErrorValue = React.use(getProjectErrorValue())
-    const SectorErrorValue = React.use(getSectorErrorValue())
-    const TypesErrorValue = React.use(getTypesErrorValue())
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>
