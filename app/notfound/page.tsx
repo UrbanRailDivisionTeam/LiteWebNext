@@ -9,7 +9,6 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
 export default function NotFound() {
     const router = useRouter()
-
     return (
         <Container maxWidth="sm">
             <Box
@@ -20,7 +19,7 @@ export default function NotFound() {
                     justifyContent: 'center',
                     minHeight: '80vh',
                     textAlign: 'center',
-                    gap: 2
+                    gap: 2,
                 }}
             >
                 <ErrorOutlineIcon sx={{ fontSize: 80, color: 'error.main', mb: 2 }} />
@@ -30,15 +29,8 @@ export default function NotFound() {
                 <Typography variant="h5" component="h2" gutterBottom>
                     找不到页面
                 </Typography>
-                <Typography variant="body1">
-                    抱歉，您访问的页面不存在。请检查URL是否正确，或返回看板首页。
-                </Typography>
-                <Button
-                    variant="contained"
-                    size="large"
-                    onClick={() => router.push('/')}
-                    sx={{ mt: 2 }}
-                >
+                <Typography variant="body1">抱歉，您访问的页面不存在。请检查URL是否正确，或返回看板首页。</Typography>
+                <Button variant="contained" size="large" onClick={() => router.push('/')} sx={{ mt: 2 }}>
                     返回首页
                 </Button>
             </Box>

@@ -5,7 +5,24 @@ import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
 import { getColorPalette } from '@/data/data'
-import { CalibrationLineGroup, data_process, labelColors, labelTexts } from './data'
+import { CalibrationLineGroup, CalibrationLineGroupProps, labelColors, labelTexts } from './data'
+
+export function data_process(input_ch?: CalibrationLineGroupProps[]) {
+    let title_data = []
+    let complete_data = []
+    let total_index = 0
+    let complete_index = 0
+    if (input_ch !== undefined) {
+        for (let variable of input_ch) {
+            title_data.push(variable.group_name)
+            complete_data.push(Math.round((variable.ontime_value / variable.total_value) * 10000) / 100)
+            complete_index += variable.ontime_value
+            total_index += variable.total_value
+        }
+    }
+    title_data.sort()
+    return { title_data, complete_data, total_index, complete_index }
+}
 
 export default function NormChart({ title_name, trend, group }: CalibrationLineGroup) {
     const colorPalette = getColorPalette()

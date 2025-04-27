@@ -1,3 +1,6 @@
+'use server'
+import { connectToDatabase } from '@/utils/db'
+
 export const CardTexts = {
     ontime: '良好' as const,
     overtime: '平均用时较长' as const,
@@ -28,48 +31,64 @@ export type CalibrationLineTotalProps = {
 
 export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     {
-        title_name: '未响应异常数',
+        title_name: '示例-未响应异常数',
         trend: 'overtime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 137,
     },
     {
-        title_name: '初步诊断进行中流程数',
+        title_name: '示例-初步诊断进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 104,
     },
     {
-        title_name: '二次诊断进行中流程数',
+        title_name: '示例-二次诊断进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 99,
     },
     {
-        title_name: '返工进行中流程数',
+        title_name: '示例-返工进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 111,
     },
     {
-        title_name: '验收进行中流程数',
+        title_name: '示例-验收进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 110,
     },
     {
-        title_name: '验收合格数',
+        title_name: '示例-验收合格数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 108,
     },
 ]
+
+export async function getCalibrationLineTotalData() {
+    try {
+        const { db } = await connectToDatabase()
+        const coll = db.collection('calibration_line_total_data')
+        const query = {}
+        const cursor = coll.find(query)
+        const results: CalibrationLineTotalProps[] = await cursor.toArray()
+        return results
+    } catch (error) {
+        console.error('查询失败：', error);
+    }
+    return CalibrationLineTotalData
+}
+
+
 
 export type CalibrationLineGroup = {
     title_name: string
@@ -216,32 +235,15 @@ export const CalibrationLineGroupData: CalibrationLineGroup[] = [
     },
 ]
 
-export function data_process(input_ch?: CalibrationLineGroupProps[]) {
-    let title_data = []
-    let complete_data = []
-    let total_index = 0
-    let complete_index = 0
-    if (input_ch !== undefined) {
-        for (let variable of input_ch) {
-            title_data.push(variable.group_name)
-            complete_data.push(Math.round((variable.ontime_value / variable.total_value) * 10000) / 100)
-            complete_index += variable.ontime_value
-            total_index += variable.total_value
-        }
-    }
-    title_data.sort()
-    return { title_data, complete_data, total_index, complete_index }
-}
-
 export interface PieChartErrorProps {
-    id?: number;
+    id?: number
     label: string
     value: number
 }
 
 export interface PieChartErrorType {
-    title_name: string;
-    data: PieChartErrorProps[];
+    title_name: string
+    data: PieChartErrorProps[]
 }
 
 export const ConfigurationErrorValue: PieChartErrorType = {
@@ -263,7 +265,7 @@ export const ConfigurationErrorValue: PieChartErrorType = {
             label: '电缆',
             value: 35,
         },
-    ]
+    ],
 }
 
 export const ProjectErrorValue: PieChartErrorType = {
@@ -285,7 +287,7 @@ export const ProjectErrorValue: PieChartErrorType = {
             label: '新港线',
             value: 35,
         },
-    ]
+    ],
 }
 
 export const SectorErrorValue: PieChartErrorType = {
@@ -323,7 +325,7 @@ export const SectorErrorValue: PieChartErrorType = {
             label: '物流',
             value: 35,
         },
-    ]
+    ],
 }
 
 export const TypesErrorValue: PieChartErrorType = {
@@ -349,5 +351,5 @@ export const TypesErrorValue: PieChartErrorType = {
             label: '缺失',
             value: 35,
         },
-    ]
+    ],
 }

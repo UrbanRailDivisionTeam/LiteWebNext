@@ -2,26 +2,20 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress'
+import LinearProgress from '@mui/material/LinearProgress'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
-import { DefaultizedPieValueType } from '@mui/x-charts/models';
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { PieChartErrorType } from './data'
 
-
 const colors = ['hsl(221, 60%, 75%)', 'hsl(220, 60%, 60%)', 'hsl(220, 60%, 45%)', 'hsl(220, 60%, 30%)', 'hsl(220, 60%, 15%)']
 
-const getArcLabel = (params: DefaultizedPieValueType) => {
-    return `${params.value}`;
-};
-
 export default function NormPieChart({ title_name, data }: PieChartErrorType) {
-    const temp_max = Math.max(...data.map(item => item.value))
+    const temp_max = Math.max(...data.map((item) => item.value))
     const temp_sum = data.reduce((acc, item) => acc + item.value, 0)
     return (
-        <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1, height: '100%',}}>
+        <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1, height: '100%' }}>
             <CardContent>
                 <Typography component="h2" variant="subtitle2">
                     {title_name}
@@ -38,7 +32,7 @@ export default function NormPieChart({ title_name, data }: PieChartErrorType) {
                         series={[
                             {
                                 data: data,
-                                arcLabel: getArcLabel,
+                                arcLabel: (item) => `${item.value}`,
                                 arcLabelMinAngle: 20,
                                 highlightScope: { fade: 'global', highlight: 'item' },
                                 innerRadius: 25,
@@ -75,13 +69,10 @@ export default function NormPieChart({ title_name, data }: PieChartErrorType) {
                                     {item.label}
                                 </Typography>
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    当前值:{item.value} / 占比:{(item.value/temp_sum * 100).toFixed(2)}%
+                                    当前值:{item.value} / 占比:{((item.value / temp_sum) * 100).toFixed(2)}%
                                 </Typography>
                             </Stack>
-                            <LinearProgress
-                                variant="determinate"
-                                value={item.value / temp_max * 100}
-                            />
+                            <LinearProgress variant="determinate" value={(item.value / temp_max) * 100} />
                         </Stack>
                     </Stack>
                 ))}
