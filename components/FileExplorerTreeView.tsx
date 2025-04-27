@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { animated, useSpring } from '@react-spring/web'
 import { styled, alpha } from '@mui/material/styles'

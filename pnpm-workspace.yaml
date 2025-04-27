@@ -1,3 +1,4 @@
 ignoredBuiltDependencies:
   - '@mui/x-telemetry'
+  - esbuild
   - sharp
