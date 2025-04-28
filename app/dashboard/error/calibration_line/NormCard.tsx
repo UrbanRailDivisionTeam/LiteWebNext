@@ -18,7 +18,7 @@ const CardColors = {
     overtime: 'error' as const,
 }
 
-export default function NormCard({ title_name, trend, request_value, request_time, acerage_time }: CalibrationLineTotalProps) {
+export default function NormCard({ title_name, trend, request_value, request_time, average_time }: CalibrationLineTotalProps) {
     return (
         <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
             <CardContent>
@@ -37,7 +37,7 @@ export default function NormCard({ title_name, trend, request_value, request_tim
                             流程平均用时 / 流程要求时限
                         </Typography>
                         <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                            {formatMinutes(acerage_time)} / {formatMinutes(request_time)}
+                            {formatMinutes(average_time)} / {formatMinutes(request_time)}
                         </Typography>
                     </Stack>
                 </Stack>

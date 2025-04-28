@@ -5,7 +5,7 @@ export type CalibrationLineTotalProps = {
     trend: 'overtime' | 'ontime'
     request_value: number
     request_time: number
-    acerage_time: number
+    average_time: number
 }
 
 export const transCalibrationLineTotalData = (data: any): CalibrationLineTotalProps[] => {
@@ -19,7 +19,7 @@ export const transCalibrationLineTotalData = (data: any): CalibrationLineTotalPr
         trend: String(item.trend || '') as 'overtime' | 'ontime',
         request_value: Number(item.request_value || 0),
         request_time: Number(item.request_time || 0),
-        acerage_time: Number(item.acerage_time || 0),
+        average_time: Number(item.average_time || 0),
     }))
     temp_data.sort((a, b) => a.index - b.index)
     return temp_data
