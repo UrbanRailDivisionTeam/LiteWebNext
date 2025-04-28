@@ -23,10 +23,7 @@ import NormPieChart from './NormPieChart'
 export default function CalibrationLine() {
     const [CalibrationLineTotalData, setCalibrationLineTotalData] = React.useState<CalibrationLineTotalProps[]>([])
     const [CalibrationLineGroupData, setCalibrationLineGroupData] = React.useState<CalibrationLineGroup[]>([])
-    const [ConfigurationErrorValue, setConfigurationErrorValue] = React.useState<PieChartErrorType | null>(null)
-    const [ProjectErrorValue, setProjectErrorValue] = React.useState<PieChartErrorType | null>(null)
-    const [SectorErrorValue, setSectorErrorValue] = React.useState<PieChartErrorType | null>(null)
-    const [TypesErrorValue, setTypesErrorValue] = React.useState<PieChartErrorType | null>(null)
+    const [PieChartErrorData, setPieChartErrorData] = React.useState<PieChartErrorType[]>([])
     React.useEffect(() => {
         async function fetchPosts() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/calibration_line_total_data`)
@@ -45,46 +42,14 @@ export default function CalibrationLine() {
     }, [])
     React.useEffect(() => {
         async function fetchPosts() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/configuration_error_value`)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_error_data`)
             const data = await res.json()
-            setConfigurationErrorValue(transPieChartErrorType(data))
-        }
-        fetchPosts()
-    }, [])
-    React.useEffect(() => {
-        async function fetchPosts() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/project_error_value`)
-            const data = await res.json()
-            setProjectErrorValue(transPieChartErrorType(data))
-        }
-        fetchPosts()
-    }, [])
-    React.useEffect(() => {
-        async function fetchPosts() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/sector_error_value`)
-            const data = await res.json()
-            setSectorErrorValue(transPieChartErrorType(data))
-        }
-        fetchPosts()
-    }, [])
-    React.useEffect(() => {
-        async function fetchPosts() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/types_error_value`)
-            const data = await res.json()
-            setTypesErrorValue(transPieChartErrorType(data))
+            setPieChartErrorData(transPieChartErrorType(data))
         }
         fetchPosts()
     }, [])
 
-    if (
-        CalibrationLineTotalData.length === 0 ||
-        CalibrationLineGroupData.length === 0 ||
-        ConfigurationErrorValue === null ||
-        ProjectErrorValue === null ||
-        SectorErrorValue === null ||
-        TypesErrorValue === null
-    )
-        return <GenericLoading />
+    if (CalibrationLineTotalData.length === 0 || CalibrationLineGroupData.length === 0 || PieChartErrorData.length === 0) return <GenericLoading />
 
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
@@ -102,18 +67,11 @@ export default function CalibrationLine() {
                 ))}
             </Grid>
             <Grid container spacing={2} columns={4} sx={{ mb: (theme) => theme.spacing(2) }}>
-                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
-                    <NormPieChart {...ConfigurationErrorValue} />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
-                    <NormPieChart {...ProjectErrorValue} />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
-                    <NormPieChart {...SectorErrorValue} />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, lg: 1 }}>
-                    <NormPieChart {...TypesErrorValue} />
-                </Grid>
+                {PieChartErrorData.map((card, index) => (
+                    <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
+                        <NormPieChart {...card} />
+                    </Grid>
+                ))}
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ width: '100%' }}>

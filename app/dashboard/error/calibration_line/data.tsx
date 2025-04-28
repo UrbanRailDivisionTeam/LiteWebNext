@@ -9,42 +9,42 @@ export type CalibrationLineTotalProps = {
 
 export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     {
-        title_name: '示例-未响应异常数',
+        title_name: '未响应异常数',
         trend: 'overtime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 137,
     },
     {
-        title_name: '示例-初步诊断进行中流程数',
+        title_name: '初步诊断进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 104,
     },
     {
-        title_name: '示例-二次诊断进行中流程数',
+        title_name: '二次诊断进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 99,
     },
     {
-        title_name: '示例-返工进行中流程数',
+        title_name: '返工进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 111,
     },
     {
-        title_name: '示例-验收进行中流程数',
+        title_name: '验收进行中流程数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
         acerage_time: 110,
     },
     {
-        title_name: '示例-验收合格数',
+        title_name: '验收合格数',
         trend: 'ontime',
         request_value: 38,
         request_time: 2 * 60,
@@ -240,16 +240,20 @@ export interface PieChartErrorType {
     data: PieChartErrorProps[]
 }
 
-export const transPieChartErrorType = (data: any): PieChartErrorType => {
-    return {
-        title_name: String(data.title_name || ''),
-        data: data.data.map(
+export const transPieChartErrorType = (data: any): PieChartErrorType[] => {
+    if (!Array.isArray(data)) {
+        console.error('API返回的数据不是数组格式')
+        return []
+    }
+    return data.map((item) => ({
+        title_name: String(item.title_name || ''),
+        data: item.data.map(
             (groupItem: any): PieChartErrorProps => ({
                 label: String(groupItem.label || ''),
                 value: Number(groupItem.value || 0),
             })
         ),
-    }
+    }))
 }
 
 export const ConfigurationErrorValue: PieChartErrorType = {
