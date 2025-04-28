@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack'
 export default function GenericLoading() {
     return (
         <Stack spacing={1}>
-            {Array.from({ length: 10 }).map((_, index) => (
+            {Array.from({ length: 20 }).map((_, index) => (
                 <Skeleton key={index} />
             ))}
         </Stack>

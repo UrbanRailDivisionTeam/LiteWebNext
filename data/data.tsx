@@ -1,7 +1,7 @@
 'use client'
 import { useTheme } from '@mui/material/styles'
 
-export function getCurrentTime(): string {
+export function getCurrentTime(label: string): string {
     return '2025-04-25 15:25:27'
 }
 export function formatMinutes(minutes: number): string {

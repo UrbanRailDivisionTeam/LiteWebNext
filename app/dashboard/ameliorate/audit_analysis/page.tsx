@@ -16,7 +16,7 @@ export default function AuditAnalysis() {
                 全员型改善审核完成情况
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime()}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('audit_analysis')}
             </Typography>
             <Grid container spacing={2} columns={2} sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12, sm: 6, lg: 1 }}>

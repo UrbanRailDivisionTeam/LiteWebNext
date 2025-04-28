@@ -16,7 +16,7 @@ export default function Export() {
                 相关方管理情况分析
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime()}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('interested_party_analysis')}
             </Typography>
             <Grid container spacing={2} columns={6} sx={{ mb: (theme) => theme.spacing(2) }}>
                 {InterestedPartyData.map((card, index) => (

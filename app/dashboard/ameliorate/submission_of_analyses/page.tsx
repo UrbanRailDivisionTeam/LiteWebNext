@@ -18,7 +18,7 @@ export default function SubmitAnalysis() {
                 全员型改善提交完成情况
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime()}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('submit_analysis')}
             </Typography>
             <Grid container spacing={2} columns={30} sx={{ mb: (theme) => theme.spacing(2) }}>
                 {AmeliorateSumbitData.map((card, index) => (
