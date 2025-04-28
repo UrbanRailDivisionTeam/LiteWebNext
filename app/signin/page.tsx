@@ -173,7 +173,7 @@ export default function SignIn() {
                         <Link component="button" type="button" onClick={handleClickOpen} variant="body2" sx={{ alignSelf: 'center' }}>
                             忘记了你的密码？
                         </Link>
-                            或者
+                        或者
                         <Link component="button" type="button" onClick={handleClickOpen} variant="body2" sx={{ alignSelf: 'center' }}>
                             没有账户？
                         </Link>

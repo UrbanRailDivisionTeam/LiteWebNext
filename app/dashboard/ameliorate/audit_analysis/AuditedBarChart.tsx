@@ -69,7 +69,7 @@ function GroupChart({ trend, department, children }: AmeliorateAuditProps) {
                     },
                 }}
                 barLabel={(item, _) => {
-                    return item.value?.toString();
+                    return item.value?.toString()
                 }}
             />
         </Stack>

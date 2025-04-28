@@ -6,13 +6,86 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+import GenericLoading from '@/components/GenericLoading'
 import { getCurrentTime } from '@/data/data'
-import { CalibrationLineTotalData, CalibrationLineGroupData, ConfigurationErrorValue, ProjectErrorValue, SectorErrorValue, TypesErrorValue } from './data'
+import {
+    CalibrationLineTotalProps,
+    transCalibrationLineTotalData,
+    CalibrationLineGroup,
+    transPieChartErrorType,
+    transCalibrationLineGroupData,
+    PieChartErrorType,
+} from './data'
 import NormCard from './NormCard'
 import NormChart from './NormChart'
 import NormPieChart from './NormPieChart'
 
 export default function CalibrationLine() {
+    const [CalibrationLineTotalData, setCalibrationLineTotalData] = React.useState<CalibrationLineTotalProps[]>([])
+    const [CalibrationLineGroupData, setCalibrationLineGroupData] = React.useState<CalibrationLineGroup[]>([])
+    const [ConfigurationErrorValue, setConfigurationErrorValue] = React.useState<PieChartErrorType | null>(null)
+    const [ProjectErrorValue, setProjectErrorValue] = React.useState<PieChartErrorType | null>(null)
+    const [SectorErrorValue, setSectorErrorValue] = React.useState<PieChartErrorType | null>(null)
+    const [TypesErrorValue, setTypesErrorValue] = React.useState<PieChartErrorType | null>(null)
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/calibration_line_total_data`)
+            const data = await res.json()
+            setCalibrationLineTotalData(transCalibrationLineTotalData(data))
+        }
+        fetchPosts()
+    }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/calibration_line_group_data`)
+            const data = await res.json()
+            setCalibrationLineGroupData(transCalibrationLineGroupData(data))
+        }
+        fetchPosts()
+    }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/configuration_error_value`)
+            const data = await res.json()
+            setConfigurationErrorValue(transPieChartErrorType(data))
+        }
+        fetchPosts()
+    }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/project_error_value`)
+            const data = await res.json()
+            setProjectErrorValue(transPieChartErrorType(data))
+        }
+        fetchPosts()
+    }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/sector_error_value`)
+            const data = await res.json()
+            setSectorErrorValue(transPieChartErrorType(data))
+        }
+        fetchPosts()
+    }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/types_error_value`)
+            const data = await res.json()
+            setTypesErrorValue(transPieChartErrorType(data))
+        }
+        fetchPosts()
+    }, [])
+
+    if (
+        CalibrationLineTotalData.length === 0 ||
+        CalibrationLineGroupData.length === 0 ||
+        ConfigurationErrorValue === null ||
+        ProjectErrorValue === null ||
+        SectorErrorValue === null ||
+        TypesErrorValue === null
+    )
+        return <GenericLoading />
+
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>

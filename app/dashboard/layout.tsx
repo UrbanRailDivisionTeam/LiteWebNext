@@ -25,7 +25,9 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
                     component="main"
                     sx={(theme) => ({
                         flexGrow: 1,
-                        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)` : alpha(theme.palette.background.default, 1),
+                        backgroundColor: theme.vars
+                            ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
+                            : alpha(theme.palette.background.default, 1),
                         overflow: 'auto',
                     })}
                 >

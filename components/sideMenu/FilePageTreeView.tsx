@@ -163,9 +163,17 @@ interface CustomTreeItemProps extends Omit<UseTreeItemParameters, 'rootRef'>, Om
 const CustomTreeItem = React.forwardRef(function CustomTreeItem(props: CustomTreeItemProps, ref: React.Ref<HTMLLIElement>) {
     const { id, itemId, label, disabled, children, ...other } = props
 
-    const { getContextProviderProps, getRootProps, getContentProps, getIconContainerProps, getCheckboxProps, getLabelProps, getGroupTransitionProps, getDragAndDropOverlayProps, status } = useTreeItem(
-        { id, itemId, children, label, disabled, rootRef: ref }
-    )
+    const {
+        getContextProviderProps,
+        getRootProps,
+        getContentProps,
+        getIconContainerProps,
+        getCheckboxProps,
+        getLabelProps,
+        getGroupTransitionProps,
+        getDragAndDropOverlayProps,
+        status,
+    } = useTreeItem({ id, itemId, children, label, disabled, rootRef: ref })
 
     const item = useTreeItemModel<ExtendedTreeItemProps>(itemId)!
     const expandable = item.children !== undefined
@@ -203,7 +211,6 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(props: CustomTre
 })
 
 export default function FilePageTreeView() {
-
     return (
         <RichTreeView
             items={mainListItems}

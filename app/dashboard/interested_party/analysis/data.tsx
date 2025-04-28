@@ -1,6 +1,6 @@
 export type InterestedPartyProps = {
-    title: string,
-    value: number,
+    title: string
+    value: number
 }
 
 export const InterestedPartyData: InterestedPartyProps[] = [
@@ -19,8 +19,8 @@ export const InterestedPartyData: InterestedPartyProps[] = [
 ]
 
 export type InterestedPartyLineChartMonthProps = {
-    title: string,
-    value: number,
+    title: string
+    value: number
 }
 
 // export const InterestedPartyLineChartMonthData: InterestedPartyLineChartMonthProps[] = [
@@ -35,7 +35,7 @@ export type InterestedPartyLineChartMonthProps = {
 //     {
 //         title: '去年同期',
 //         value: 80,
-//     },  
+//     },
 //     {
 //         title: '去年同期',
 //         value: 80,
@@ -43,10 +43,10 @@ export type InterestedPartyLineChartMonthProps = {
 // ]
 
 export type InterestedPartyLineChartDayPros = {
-    title: string,
-    value: number,
+    title: string
+    value: number
 }
 
 // export const InterestedPartyLineChartMonthData: InterestedPartyLineChartDayProps[] = [
-    
+
 // ]

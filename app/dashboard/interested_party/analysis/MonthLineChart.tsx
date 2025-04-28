@@ -20,20 +20,20 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
 }
 
 function getLast12Months() {
-    const months = [];
-    const today = new Date();
-    
+    const months = []
+    const today = new Date()
+
     for (let i = 11; i >= 0; i--) {
-        const date = new Date();
-        date.setMonth(today.getMonth() - i);
+        const date = new Date()
+        date.setMonth(today.getMonth() - i)
         const monthName = date.toLocaleDateString('zh-CN', {
-            year:'numeric',
+            year: 'numeric',
             month: 'short',
-        });
-        months.push(monthName);
+        })
+        months.push(monthName)
     }
-    
-    return months;
+
+    return months
 }
 
 export default function MonthLineChart() {
@@ -84,9 +84,7 @@ export default function MonthLineChart() {
                             stack: 'total',
                             area: true,
                             stackOrder: 'ascending',
-                            data: [
-                                300, 900, 600, 1200, 1500, 1800, 2400, 2100, 2700, 3000, 1800, 3300, 
-                            ],
+                            data: [300, 900, 600, 1200, 1500, 1800, 2400, 2100, 2700, 3000, 1800, 3300],
                         },
                         {
                             id: 'referral',
@@ -96,9 +94,7 @@ export default function MonthLineChart() {
                             stack: 'total',
                             area: true,
                             stackOrder: 'ascending',
-                            data: [
-                                500, 900, 700, 1400, 1100, 1700, 2300, 2000, 2600, 2900, 2300, 3200, 
-                            ],
+                            data: [500, 900, 700, 1400, 1100, 1700, 2300, 2000, 2600, 2900, 2300, 3200],
                         },
                         {
                             id: 'organic',
@@ -107,9 +103,7 @@ export default function MonthLineChart() {
                             curve: 'linear',
                             stack: 'total',
                             stackOrder: 'ascending',
-                            data: [
-                                1000, 1500, 1200, 1700, 1300, 2000, 2400, 2200, 2600, 2800, 2500, 3000,
-                            ],
+                            data: [1000, 1500, 1200, 1700, 1300, 2000, 2400, 2200, 2600, 2800, 2500, 3000],
                             area: true,
                         },
                     ]}

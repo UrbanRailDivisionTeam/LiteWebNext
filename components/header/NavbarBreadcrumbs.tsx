@@ -53,7 +53,7 @@ export default function NavbarBreadcrumbs() {
 
     return (
         <StyledBreadcrumbs aria-label="breadcrumb" separator={<NavigateNextRoundedIcon fontSize="small" />}>
-            {pathSegments.map((segment, index) => (
+            {pathSegments.map((segment, index) =>
                 index === pathSegments.length - 1 ? (
                     <Typography
                         key={segment.path}
@@ -67,11 +67,7 @@ export default function NavbarBreadcrumbs() {
                         {segment.label}
                     </Typography>
                 ) : (
-                    <Link
-                        key={segment.path}
-                        href={segment.path}
-                        style={{ textDecoration: 'none' }}
-                    >
+                    <Link key={segment.path} href={segment.path} style={{ textDecoration: 'none' }}>
                         <Typography
                             variant="body1"
                             sx={{
@@ -87,7 +83,7 @@ export default function NavbarBreadcrumbs() {
                         </Typography>
                     </Link>
                 )
-            ))}
+            )}
         </StyledBreadcrumbs>
     )
 }

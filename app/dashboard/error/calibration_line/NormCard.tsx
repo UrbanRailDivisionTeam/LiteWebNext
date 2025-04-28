@@ -29,7 +29,7 @@ export default function NormCard({ title_name, trend, request_value, request_tim
                     <Stack sx={{ justifyContent: 'space-between' }}>
                         <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography variant="h4" component="p">
-                                {request_value} 
+                                {request_value}
                             </Typography>
                             <Chip size="small" color={CardColors[trend]} label={CardTexts[trend]} />
                         </Stack>

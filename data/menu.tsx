@@ -136,7 +136,7 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 icon: ArticleIcon,
                 href: '/dashboard/business_connection/costs',
             },
-        ]
+        ],
     },
     {
         id: '7',
@@ -156,7 +156,7 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 icon: ArticleIcon,
                 href: '/dashboard/plan/workshop_workloads',
             },
-        ]
+        ],
     },
     {
         id: '8',
@@ -168,12 +168,12 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
 
 // 所有侧边栏下半部分设置的相关定义
 export const secondaryListItems = [
-    { 
-        label: '设置', 
-        icon: <SettingsRoundedIcon /> 
+    {
+        label: '设置',
+        icon: <SettingsRoundedIcon />,
     },
-    { 
-        label: '关于', 
-        icon: <InfoRoundedIcon /> 
+    {
+        label: '关于',
+        icon: <InfoRoundedIcon />,
     },
 ]

@@ -8,7 +8,6 @@ import Stack from '@mui/material/Stack'
 import FilePageTreeView from '@/components/sideMenu/FilePageTreeView'
 import { secondaryListItems } from '@/data/menu'
 
-
 export default function MenuContent() {
     return (
         <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-between' }}>

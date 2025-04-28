@@ -1,29 +1,29 @@
 'use client'
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';  // 修改这里：使用 next/navigation
-import { Box, CircularProgress, Typography, Container } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation' // 修改这里：使用 next/navigation
+import { Box, CircularProgress, Typography, Container } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  minHeight: '100vh',
-  textAlign: 'center',
-  gap: theme.spacing(3)
-}));
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    textAlign: 'center',
+    gap: theme.spacing(3),
+}))
 
 export default function RedirectPage() {
-    const router = useRouter();
+    const router = useRouter()
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            router.push('/dashboard');  // 这里的 push 方法依然可用
-        }, 1000);
+            router.push('/dashboard') // 这里的 push 方法依然可用
+        }, 1000)
 
-        return () => clearTimeout(timer);
-    }, [router]);
+        return () => clearTimeout(timer)
+    }, [router])
 
     return (
         <StyledContainer maxWidth="sm">
@@ -40,8 +40,7 @@ export default function RedirectPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}
-                >
-                </Box>
+                ></Box>
             </Box>
             <Typography variant="h6" color="text.primary">
                 该页面不存在，页面跳转中...
@@ -50,5 +49,5 @@ export default function RedirectPage() {
                 正在为您跳转到看板首页
             </Typography>
         </StyledContainer>
-    );
+    )
 }

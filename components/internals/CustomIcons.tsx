@@ -107,8 +107,18 @@ export function BrazilFlag() {
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_983_1741)">
                     <path fillRule="evenodd" clipRule="evenodd" d="M-4 0.5V24.5H28V0.5H-4Z" fill="#009933" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M11.9265 4.20404L24.1283 12.7075L11.7605 20.6713L-0.191406 12.5427L11.9265 4.20404Z" fill="#FFD221" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M11.9265 4.20404L24.1283 12.7075L11.7605 20.6713L-0.191406 12.5427L11.9265 4.20404Z" fill="url(#paint0_linear_983_1741)" />
+                    <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M11.9265 4.20404L24.1283 12.7075L11.7605 20.6713L-0.191406 12.5427L11.9265 4.20404Z"
+                        fill="#FFD221"
+                    />
+                    <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M11.9265 4.20404L24.1283 12.7075L11.7605 20.6713L-0.191406 12.5427L11.9265 4.20404Z"
+                        fill="url(#paint0_linear_983_1741)"
+                    />
                     <path
                         fillRule="evenodd"
                         clipRule="evenodd"

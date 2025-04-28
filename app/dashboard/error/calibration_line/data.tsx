@@ -52,6 +52,20 @@ export const CalibrationLineTotalData: CalibrationLineTotalProps[] = [
     },
 ]
 
+export const transCalibrationLineTotalData = (data: any): CalibrationLineTotalProps[] => {
+    if (!Array.isArray(data)) {
+        console.error('API返回的数据不是数组格式')
+        return []
+    }
+    return data.map((item) => ({
+        title_name: String(item.title_name || ''),
+        trend: String(item.trend || '') as 'overtime' | 'ontime',
+        request_value: Number(item.request_value || 0),
+        request_time: Number(item.request_time || 0),
+        acerage_time: Number(item.acerage_time || 0),
+    }))
+}
+
 export type CalibrationLineGroup = {
     title_name: string
     trend: 'inlimit' | 'overlimit'
@@ -197,6 +211,24 @@ export const CalibrationLineGroupData: CalibrationLineGroup[] = [
     },
 ]
 
+export const transCalibrationLineGroupData = (data: any): CalibrationLineGroup[] => {
+    if (!Array.isArray(data)) {
+        console.error('API返回的数据不是数组格式')
+        return []
+    }
+    return data.map((item) => ({
+        title_name: String(item.title_name || ''),
+        trend: String(item.trend || '') as 'inlimit' | 'overlimit',
+        group: item.group.map(
+            (groupItem: any): CalibrationLineGroupProps => ({
+                group_name: String(groupItem.group_name || ''),
+                ontime_value: Number(groupItem.ontime_value || 0),
+                total_value: Number(groupItem.total_value || 0),
+            })
+        ),
+    }))
+}
+
 export interface PieChartErrorProps {
     id?: number
     label: string
@@ -206,6 +238,18 @@ export interface PieChartErrorProps {
 export interface PieChartErrorType {
     title_name: string
     data: PieChartErrorProps[]
+}
+
+export const transPieChartErrorType = (data: any): PieChartErrorType => {
+    return {
+        title_name: String(data.title_name || ''),
+        data: data.data.map(
+            (groupItem: any): PieChartErrorProps => ({
+                label: String(groupItem.label || ''),
+                value: Number(groupItem.value || 0),
+            })
+        ),
+    }
 }
 
 export const ConfigurationErrorValue: PieChartErrorType = {
@@ -315,4 +359,3 @@ export const TypesErrorValue: PieChartErrorType = {
         },
     ],
 }
-

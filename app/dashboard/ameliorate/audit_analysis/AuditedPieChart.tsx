@@ -114,7 +114,7 @@ export default function AuditedPieChart() {
                     </Grid>
                     <Grid key="11" size={{ xs: 12, sm: 6, lg: 8 }}>
                         {DepartmentData.map((country, index) => (
-                            <Stack key={`11${String(index)}`}  direction="row" sx={{ alignItems: 'center', gap: 2, pb: 2 }}>
+                            <Stack key={`11${String(index)}`} direction="row" sx={{ alignItems: 'center', gap: 2, pb: 2 }}>
                                 <Stack sx={{ gap: 1, flexGrow: 1 }}>
                                     <Stack
                                         direction="row"

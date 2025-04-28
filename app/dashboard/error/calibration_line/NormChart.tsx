@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
 import { getColorPalette } from '@/data/data'
-import { CalibrationLineGroup, CalibrationLineGroupProps} from './data'
+import { CalibrationLineGroup, CalibrationLineGroupProps } from './data'
 
 const labelTexts = {
     inlimit: '及时率良好' as const,
@@ -36,7 +36,7 @@ export function data_process(input_ch?: CalibrationLineGroupProps[]) {
 
 export default function NormChart({ title_name, trend, group }: CalibrationLineGroup) {
     const colorPalette = getColorPalette()
-    const { title_data, complete_data, total_index, complete_index  } = data_process(group)
+    const { title_data, complete_data, total_index, complete_index } = data_process(group)
     return (
         <Stack>
             <Stack sx={{ justifyContent: 'space-between' }}>
@@ -86,7 +86,7 @@ export default function NormChart({ title_name, trend, group }: CalibrationLineG
                     },
                 }}
                 barLabel={(item, context) => {
-                    return `${item.value?.toString()}%`;
+                    return `${item.value?.toString()}%`
                 }}
             />
         </Stack>

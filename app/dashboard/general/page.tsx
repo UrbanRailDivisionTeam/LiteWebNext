@@ -1,8 +1,6 @@
 'use client'
-import RedirectPageComponent from '@/components/RedirectPage';
+import RedirectPageComponent from '@/components/RedirectPage'
 
 export default function RedirectPage() {
-    return (
-        <RedirectPageComponent />
-    );
+    return <RedirectPageComponent />
 }

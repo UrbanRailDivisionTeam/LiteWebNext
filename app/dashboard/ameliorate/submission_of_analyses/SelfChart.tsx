@@ -66,7 +66,7 @@ export default function SelfChart({ title, trend, children }: AmeliorateSumbitPr
                     },
                 }}
                 barLabel={(item, _) => {
-                    return item.value?.toString();
+                    return item.value?.toString()
                 }}
             />
         </Stack>

@@ -169,7 +169,10 @@ export default function SignUp() {
                                 color={passwordError ? 'error' : 'primary'}
                             />
                         </FormControl>
-                        <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="I want to receive updates via email." />
+                        <FormControlLabel
+                            control={<Checkbox value="allowExtraEmails" color="primary" />}
+                            label="I want to receive updates via email."
+                        />
                         <Button type="submit" fullWidth variant="contained" onClick={validateInputs}>
                             Sign up
                         </Button>
