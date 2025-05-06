@@ -11,7 +11,7 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
     {
         id: '1',
         label: '主页',
-        href: '/dashboard',
+        href: '/dashboard/home',
         icon: HomeRoundedIcon,
     },
     {
@@ -156,10 +156,36 @@ export const mainListItems: TreeViewBaseItem<ExtendedTreeItemProps>[] = [
                 icon: ArticleIcon,
                 href: '/dashboard/plan/workshop_workloads',
             },
+            {
+                id: '7.3',
+                label: 'APS辅助排程',
+                icon: ArticleIcon,
+                href: '/dashboard/plan/aps_assisted_scheduling',
+            },
         ],
     },
     {
-        id: '8',
+        id:'8',
+        label: 'BOM管理',
+        href: '/dashboard/bom',
+        icon: FolderRounded,
+        children: [
+            {
+                id: '8.1',
+                label: '跨系统BOM一致性检验',
+                icon: ArticleIcon,
+                href: '/dashboard/bom/consistency_check',
+            },
+            {
+                id: '8.2',
+                label: 'BOM定额展示',
+                icon: ArticleIcon,
+                href: '/dashboard/bom/quota_display',
+            },
+        ]
+    },
+    {
+        id: '9',
         label: '城轨通讯录',
         href: '/dashboard/directory',
         icon: ArticleIcon,

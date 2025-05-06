@@ -19,7 +19,7 @@ export default function RedirectPage() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            router.push('/dashboard') // 这里的 push 方法依然可用
+            router.push('/dashboard/home') // 这里的 push 方法依然可用
         }, 1000)
 
         return () => clearTimeout(timer)
