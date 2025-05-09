@@ -21,11 +21,13 @@ export const transCalibrationLineTotalData = (data: any): CalibrationLineTotalPr
         request_time: Number(item.request_time || 0),
         average_time: Number(item.average_time || 0),
     }))
+    temp_data = temp_data.filter(item => item.title_name.trim() !== '')
     temp_data.sort((a, b) => a.index - b.index)
     return temp_data
 }
 
 export type CalibrationLineGroup = {
+    index : number
     title_name: string
     trend: 'inlimit' | 'overlimit'
     group: CalibrationLineGroupProps[]
@@ -43,6 +45,7 @@ export const transCalibrationLineGroupData = (data: any): CalibrationLineGroup[]
         return []
     }
     let temp_data = data.map((item) => ({
+        index: Number(item.index || 0),
         title_name: String(item.title_name || ''),
         trend: String(item.trend || '') as 'inlimit' | 'overlimit',
         group: item.group.map(
@@ -53,7 +56,8 @@ export const transCalibrationLineGroupData = (data: any): CalibrationLineGroup[]
             })
         ),
     }))
-    temp_data.sort((a, b) => a.title_name.localeCompare(b.title_name))
+    temp_data = temp_data.filter(item => item.title_name.trim() !== '')
+    temp_data.sort((a, b) => a.index - b.index)
     return temp_data
 }
 
@@ -64,6 +68,7 @@ export interface PieChartErrorProps {
 }
 
 export interface PieChartErrorType {
+    index : number
     title_name: string
     data: PieChartErrorProps[]
 }
@@ -74,6 +79,7 @@ export const transPieChartErrorType = (data: any): PieChartErrorType[] => {
         return []
     }
     let temp_data = data.map((item) => ({
+        index : Number(item.index || 0),
         title_name: String(item.title_name || ''),
         data: item.data.map(
             (groupItem: any): PieChartErrorProps => ({
@@ -82,7 +88,8 @@ export const transPieChartErrorType = (data: any): PieChartErrorType[] => {
             })
         ),
     }))
-    temp_data.sort((a, b) => a.title_name.localeCompare(b.title_name))
+    temp_data = temp_data.filter(item => item.title_name.trim() !== '')
+    temp_data.sort((a, b) => a.index - b.index)
     return temp_data
 }
 

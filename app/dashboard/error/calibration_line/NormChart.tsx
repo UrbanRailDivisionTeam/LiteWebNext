@@ -86,6 +86,9 @@ export default function NormChart({ title_name, trend, group }: CalibrationLineG
                     },
                 }}
                 barLabel={(item, context) => {
+                    if (item.value === 0) {
+                        return ''
+                    }
                     return `${item.value?.toString()}%`
                 }}
             />

@@ -23,7 +23,8 @@ import NormPieChart from './NormPieChart'
 export default function CalibrationLine() {
     const [CalibrationLineTotalData, setCalibrationLineTotalData] = React.useState<CalibrationLineTotalProps[]>([])
     const [CalibrationLineGroupData, setCalibrationLineGroupData] = React.useState<CalibrationLineGroup[]>([])
-    const [PieChartErrorData, setPieChartErrorData] = React.useState<PieChartErrorType[]>([])
+    const [PieChartNoErrorData, setPieChartNoErrorData] = React.useState<PieChartErrorType[]>([])
+    // const [PieChartErrorData, setPieChartErrorData] = React.useState<PieChartErrorType[]>([])
     React.useEffect(() => {
         async function fetchPosts() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/calibration_line_total_data`)
@@ -42,14 +43,27 @@ export default function CalibrationLine() {
     }, [])
     React.useEffect(() => {
         async function fetchPosts() {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_error_data`)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_no_error_data`)
             const data = await res.json()
-            setPieChartErrorData(transPieChartErrorType(data))
+            setPieChartNoErrorData(transPieChartErrorType(data))
         }
         fetchPosts()
     }, [])
+    // React.useEffect(() => {
+    //     async function fetchPosts() {
+    //         const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_error_data`)
+    //         const data = await res.json()
+    //         setPieChartErrorData(transPieChartErrorType(data))
+    //     }
+    //     fetchPosts()
+    // }, [])
 
-    if (CalibrationLineTotalData.length === 0 || CalibrationLineGroupData.length === 0 || PieChartErrorData.length === 0) return <GenericLoading />
+    if (
+        CalibrationLineTotalData.length === 0 ||
+        CalibrationLineGroupData.length === 0 ||
+        PieChartNoErrorData.length === 0
+        // PieChartErrorData.length === 0
+    ) return <GenericLoading />
 
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
@@ -66,13 +80,20 @@ export default function CalibrationLine() {
                     </Grid>
                 ))}
             </Grid>
-            <Grid container spacing={2} columns={PieChartErrorData.length} sx={{ mb: (theme) => theme.spacing(2) }}>
-                {PieChartErrorData.map((card, index) => (
+            <Grid container spacing={2} columns={PieChartNoErrorData.length} sx={{ mb: (theme) => theme.spacing(2) }}>
+                {PieChartNoErrorData.map((card, index) => (
                     <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
                         <NormPieChart {...card} />
                     </Grid>
                 ))}
             </Grid>
+            {/* <Grid container spacing={2} columns={PieChartErrorData.length} sx={{ mb: (theme) => theme.spacing(2) }}>
+                {PieChartErrorData.map((card, index) => (
+                    <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
+                        <NormPieChart {...card} />
+                    </Grid>
+                ))}
+            </Grid> */}
             <Grid size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ width: '100%' }}>
                     <CardContent>
