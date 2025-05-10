@@ -12,13 +12,21 @@ import { getCurrentTime } from '@/data/data'
 import { AmeliorateSumbitData } from './data'
 
 export default function SubmitAnalysis() {
+    const [UpdateTime, setUpdateTime] = React.useState<string>('')
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const data = await getCurrentTime('submit_analysis')
+            setUpdateTime(data)
+        }
+        fetchPosts()
+    }, [])
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>
                 全员型改善提交完成情况
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('submit_analysis')}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{UpdateTime}
             </Typography>
             <Grid container spacing={2} columns={30} sx={{ mb: (theme) => theme.spacing(2) }}>
                 {AmeliorateSumbitData.map((card, index) => (

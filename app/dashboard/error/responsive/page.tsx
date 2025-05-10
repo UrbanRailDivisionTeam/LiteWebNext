@@ -8,14 +8,21 @@ import GenericLoading from '@/components/GenericLoading'
 import { getCurrentTime } from '@/data/data'
 
 export default function Responsive() {
-
+    const [UpdateTime, setUpdateTime] = React.useState<string>('')
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const data = await getCurrentTime('responsive')
+            setUpdateTime(data)
+        }
+        fetchPosts()
+    }, [])
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>
                 生产异常响应与处理情况
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('responsive')}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{UpdateTime}
             </Typography>
         </Box>
 
