@@ -18,13 +18,21 @@ import {
 } from './data'
 import NormCard from './NormCard'
 import NormChart from './NormChart'
-import NormPieChart from './NormPieChart'
+import { NormPieChart, NormPieChartOrthogonal } from './NormPieChart'
 
 export default function CalibrationLine() {
+    const [UpdateTime, setUpdateTime] = React.useState<string>('')
     const [CalibrationLineTotalData, setCalibrationLineTotalData] = React.useState<CalibrationLineTotalProps[]>([])
     const [CalibrationLineGroupData, setCalibrationLineGroupData] = React.useState<CalibrationLineGroup[]>([])
     const [PieChartNoErrorData, setPieChartNoErrorData] = React.useState<PieChartErrorType[]>([])
-    // const [PieChartErrorData, setPieChartErrorData] = React.useState<PieChartErrorType[]>([])
+    const [PieChartErrorData, setPieChartErrorData] = React.useState<PieChartErrorType[]>([])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const data = await getCurrentTime('calibration_line')
+            setUpdateTime(data)
+        }
+        fetchPosts()
+    }, [])
     React.useEffect(() => {
         async function fetchPosts() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/calibration_line_total_data`)
@@ -49,20 +57,20 @@ export default function CalibrationLine() {
         }
         fetchPosts()
     }, [])
-    // React.useEffect(() => {
-    //     async function fetchPosts() {
-    //         const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_error_data`)
-    //         const data = await res.json()
-    //         setPieChartErrorData(transPieChartErrorType(data))
-    //     }
-    //     fetchPosts()
-    // }, [])
+    React.useEffect(() => {
+        async function fetchPosts() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URI}/liteweb/pie_chart_error_data`)
+            const data = await res.json()
+            setPieChartErrorData(transPieChartErrorType(data))
+        }
+        fetchPosts()
+    }, [])
 
     if (
         CalibrationLineTotalData.length === 0 ||
         CalibrationLineGroupData.length === 0 ||
-        PieChartNoErrorData.length === 0
-        // PieChartErrorData.length === 0
+        PieChartNoErrorData.length === 0 ||
+        PieChartErrorData.length === 0
     ) return <GenericLoading />
 
     return (
@@ -71,7 +79,7 @@ export default function CalibrationLine() {
                 校线异常处理流程情况
             </Typography>
             <Typography color="textSecondary" sx={{ mb: 2 }}>
-                数据非实时更新，后台任务定时刷新，最近更新时间：{getCurrentTime('calibration_line')}
+                数据非实时更新，后台任务定时刷新，最近更新时间：{UpdateTime}
             </Typography>
             <Grid container spacing={2} columns={CalibrationLineTotalData.length} sx={{ mb: (theme) => theme.spacing(2) }}>
                 {CalibrationLineTotalData.map((card, index) => (
@@ -87,13 +95,25 @@ export default function CalibrationLine() {
                     </Grid>
                 ))}
             </Grid>
-            {/* <Grid container spacing={2} columns={PieChartErrorData.length} sx={{ mb: (theme) => theme.spacing(2) }}>
-                {PieChartErrorData.map((card, index) => (
-                    <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
-                        <NormPieChart {...card} />
-                    </Grid>
-                ))}
-            </Grid> */}
+            <Grid container spacing={2} columns={1} sx={{ mb: (theme) => theme.spacing(2) }}>
+                <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1, height: '100%' }}>
+                    <CardContent>
+                        <Typography color="h3" variant="h5" gutterBottom>
+                            本月校线异常原因占比
+                        </Typography>
+                        <Grid container spacing={2} columns={3} sx={{ mb: (theme) => theme.spacing(2) }}>
+                            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+                                <NormPieChartOrthogonal {...PieChartErrorData[0]} have_card={false} />
+                            </Grid>
+                            {PieChartErrorData.slice(1).map((card, index) => (
+                                <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
+                                    <NormPieChart {...card} have_card={false} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </CardContent>
+                </Card>
+            </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ width: '100%' }}>
                     <CardContent>

@@ -56,8 +56,17 @@ export const transCalibrationLineGroupData = (data: any): CalibrationLineGroup[]
             })
         ),
     }))
+    // 对每个项目的group数组进行排序
+    temp_data.forEach(item => {
+        item.group.sort((a: CalibrationLineGroupProps, b: CalibrationLineGroupProps) => {
+            const ratioA = a.total_value === 0 ? 0 : a.ontime_value / a.total_value
+            const ratioB = b.total_value === 0 ? 0 : b.ontime_value / b.total_value
+            return ratioB - ratioA // 从大到小排序
+        })
+    })
     temp_data = temp_data.filter(item => item.title_name.trim() !== '')
     temp_data.sort((a, b) => a.index - b.index)
+    
     return temp_data
 }
 
@@ -88,8 +97,10 @@ export const transPieChartErrorType = (data: any): PieChartErrorType[] => {
             })
         ),
     }))
-    temp_data = temp_data.filter(item => item.title_name.trim() !== '')
+    // 遍历每个item的data，删除label为空的项
+    temp_data.forEach(item => {
+        item.data = item.data.filter((d: PieChartErrorProps) => d.label.trim() !== '')
+    })
     temp_data.sort((a, b) => a.index - b.index)
     return temp_data
 }
-

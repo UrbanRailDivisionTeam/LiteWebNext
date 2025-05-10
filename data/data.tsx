@@ -1,8 +1,10 @@
 'use client'
 import { useTheme } from '@mui/material/styles'
 
-export function getCurrentTime(label: string): string {
-    return '2025-04-25 15:25:27'
+export async function getCurrentTime(label: string): Promise<string> {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/update_time/${label}`)
+    const data = await res.json()
+    return data['time']
 }
 export function formatMinutes(minutes: number): string {
     // 计算小时数（向下取整）
@@ -15,7 +17,7 @@ export function formatMinutes(minutes: number): string {
     } else if (remainingMinutes === 0) {
         return `${hours}小时`
     } else {
-        return `${hours}小时${remainingMinutes}分钟`
+        return `${hours}小时${remainingMinutes.toFixed(0)}分钟`
     }
 }
 
