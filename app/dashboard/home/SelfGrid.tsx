@@ -25,8 +25,7 @@ export default function SelfGrid({ title, url, description }: SelfGridProps) {
                     <Link
                         href={url}
                         target="_blank"
-                        rel="noopener"
-                        referrerPolicy="no-referrer"  
+                        rel="noreferrer"
                         underline="none"
                         color="primary"
                         sx={{
