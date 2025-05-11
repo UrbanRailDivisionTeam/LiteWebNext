@@ -104,7 +104,7 @@ export function NormPieChart({ title_name, data, have_card = true }: NormPieChar
 export function NormPieChartOrthogonal({ title_name, data, have_card = true }: NormPieChartProps) {
     const temp_max = Math.max(...data.map((item) => item.value))
     const temp_sum = data.reduce((acc, item) => acc + item.value, 0)
-    console.log(data.length)
+    const chart_length = Math.max(50 * data.length, 260)
     return (
         <CardOr have_card={have_card}>
             <Typography component="h2" variant="subtitle2">
@@ -132,8 +132,8 @@ export function NormPieChartOrthogonal({ title_name, data, have_card = true }: N
                                 cornerRadius: 5,
                             },
                         ]}
-                        height={50 * data.length}
-                        width={50 * data.length}
+                        height={chart_length}
+                        width={chart_length}
                         slotProps={{
                             legend: { hidden: true },
                         }}
