@@ -3,11 +3,11 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { getCurrentTime } from '@/data/data'
-import AwaitingReviewPieChart from './AwaitingReviewPieChart'
-import AuditedPieChart from './AuditedPieChart'
-import AwaitingReviewBarChart from './AwaitingReviewBarChart'
-import AuditedBarChart from './AuditedBarChart'
+import { getCurrentTime } from '@/components/data/data'
+import AwaitingReviewPieChart from './components/AwaitingReviewPieChart'
+import AuditedPieChart from './components/AuditedPieChart'
+import AwaitingReviewBarChart from './components/AwaitingReviewBarChart'
+import AuditedBarChart from './components/AuditedBarChart'
 
 export default function AuditAnalysis() {
     const [UpdateTime, setUpdateTime] = React.useState<string>('')

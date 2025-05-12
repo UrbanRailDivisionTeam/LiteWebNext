@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
-import SelfCard from './SelfCard'
-import SelfChart from './SelfChart'
-import { getCurrentTime } from '@/data/data'
-import { AmeliorateSumbitData } from './data'
+import SelfCard from './components/SelfCard'
+import SelfChart from './components/SelfChart'
+import { getCurrentTime } from '@/components/data/data'
+import { AmeliorateSumbitData } from './components/data'
 
 export default function SubmitAnalysis() {
     const [UpdateTime, setUpdateTime] = React.useState<string>('')

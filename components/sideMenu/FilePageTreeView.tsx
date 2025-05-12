@@ -17,7 +17,7 @@ import { TreeItemDragAndDropOverlay } from '@mui/x-tree-view/TreeItemDragAndDrop
 import { useTreeItemModel } from '@mui/x-tree-view/hooks'
 import ArticleIcon from '@mui/icons-material/Article'
 import FolderRounded from '@mui/icons-material/FolderRounded'
-import { mainListItems } from '@/data/menu'
+import { mainListItems } from '@/components/data/menu'
 
 export type ExtendedTreeItemProps = {
     id: string

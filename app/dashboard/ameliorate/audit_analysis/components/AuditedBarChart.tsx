@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
-import { getColorPalette } from '@/data/data'
+import { getColorPalette } from '@/components/data/data'
 import { AmeliorateAuditData, AmeliorateAuditProps, data_process, labelColors, labelTexts } from './data'
 
 function GroupChart({ trend, department, children }: AmeliorateAuditProps) {

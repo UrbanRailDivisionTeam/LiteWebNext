@@ -4,7 +4,7 @@ import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { BarChart } from '@mui/x-charts/BarChart'
-import { getColorPalette } from '@/data/data'
+import { getColorPalette } from '@/components/data/data'
 import { CalibrationLineGroup, CalibrationLineGroupProps } from './data'
 
 const labelTexts = {

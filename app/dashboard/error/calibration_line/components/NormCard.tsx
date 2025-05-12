@@ -5,7 +5,7 @@ import Chip from '@mui/material/Chip'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { formatMinutes } from '@/data/data'
+import { formatMinutes } from '@/components/data/data'
 import { CalibrationLineTotalProps } from './data'
 
 const CardTexts = {

@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import GenericLoading from '@/components/GenericLoading'
-import { getCurrentTime } from '@/data/data'
+import { getCurrentTime } from '@/components/data/data'
 import {
     CalibrationLineTotalProps,
     transCalibrationLineTotalData,
@@ -15,10 +15,10 @@ import {
     transPieChartErrorType,
     transCalibrationLineGroupData,
     PieChartErrorType,
-} from './data'
-import NormCard from './NormCard'
-import NormChart from './NormChart'
-import { NormPieChart, NormPieChartOrthogonal } from './NormPieChart'
+} from './components/data'
+import NormCard from './components/NormCard'
+import NormChart from './components/NormChart'
+import { NormPieChart, NormPieChartOrthogonal } from './components/NormPieChart'
 
 export default function CalibrationLine() {
     const [UpdateTime, setUpdateTime] = React.useState<string>('')
@@ -105,7 +105,9 @@ export default function CalibrationLine() {
                             <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
                                 <NormPieChartOrthogonal {...PieChartErrorData[0]} have_card={false} />
                             </Grid>
-                            <Divider />
+                            <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+                                <Divider />
+                            </Grid>
                             {PieChartErrorData.slice(1).map((card, index) => (
                                 <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
                                     <NormPieChart {...card} have_card={false} />

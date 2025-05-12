@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import FilePageTreeView from '@/components/sideMenu/FilePageTreeView'
-import { secondaryListItems } from '@/data/menu'
+import { secondaryListItems } from '@/components/data/menu'
 
 export default function MenuContent() {
     return (
