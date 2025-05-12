@@ -105,6 +105,7 @@ export default function CalibrationLine() {
                             <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
                                 <NormPieChartOrthogonal {...PieChartErrorData[0]} have_card={false} />
                             </Grid>
+                            <Divider />
                             {PieChartErrorData.slice(1).map((card, index) => (
                                 <Grid key={index} size={{ xs: 12, sm: 6, lg: 1 }}>
                                     <NormPieChart {...card} have_card={false} />

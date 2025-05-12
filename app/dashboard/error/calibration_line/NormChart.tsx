@@ -91,7 +91,13 @@ export default function NormChart({ title_name, trend, group }: CalibrationLineG
                     }
                     return `${item.value?.toString()}%`
                 }}
-            />
+                sx={{
+                    '& .MuiBarLabel-root': { 
+                        fill: '#ffffff'
+                    }
+                }}
+            >
+            </BarChart>
         </Stack>
     )
 }

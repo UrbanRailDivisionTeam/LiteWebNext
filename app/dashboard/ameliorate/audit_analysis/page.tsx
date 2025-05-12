@@ -18,6 +18,8 @@ export default function AuditAnalysis() {
         }
         fetchPosts()
     }, [])
+
+    
     return (
         <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
             <Typography component="h2" variant="h4" sx={{ mb: 2 }}>
